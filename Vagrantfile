@@ -1,13 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-$script_set_default_route =  <<-'SCRIPT'
-if (!(Get-NetRoute | Where-Object {$_.NextHop -eq "172.31.10.1"})) {
-  New-NetRoute -InterfaceIndex 6 -NextHop 172.31.10.1 -DestinationPrefix 0.0.0.0/0
-}
-SCRIPT
-
 Vagrant.configure("2") do |config|
+
+  config.winrm.transport = :plaintext
+  config.winrm.basic_auth_only = true
+
   config.vm.provider "virtualbox" do |vb|
     # Use Linked Clones
     vb.linked_clone = true
@@ -19,11 +17,12 @@ Vagrant.configure("2") do |config|
     dc.vm.box = "gusztavvargadr/windows-server-core"
     dc.vm.hostname = "dc"
     dc.vm.network "private_network", ip: "172.31.10.10", virtualbox__intnet: "NATNetwork"
-    dc.vm.provision "chef_zero" do |chef|
-      chef.nodes_path = "./nodes"
-      chef.add_recipe "deploy_dc"
+    dc.vm.provision "chef_solo" do |chef|
+      # chef.nodes_path = "./nodes"
+      chef.add_recipe "recipe[cs_lab::deploy_dc]"
+      chef.add_recipe "recipe[cs_lab::deploy_dhcp]"
+      chef.add_recipe "recipe[cs_lab::deploy_ad]"
     end
-    dc.vm.provision "shell", inline: $script_set_default_route
   end
 
   # config.vm.define "admin" do |admin|

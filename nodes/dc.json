@@ -23,7 +23,7 @@
       },
       "waiver_file": null,
       "json_file": {
-        "location": "C:\\chef\\compliance_reports\\compliance-20230818202409.json"
+        "location": "C:\\chef\\compliance_reports\\compliance-20230821224605.json"
       },
       "run_time_limit": 1.0,
       "result_message_limit": 10000,
@@ -39,6 +39,18 @@
     "WF_ADDS": [
       "AD-Domain-Services",
       "GPMC"
+    ],
+    "WF_DHCP": [
+      "DHCP"
+    ],
+    "WF_DNS": [
+      "DNS"
+    ],
+    "WF_ADCS": [
+      "AD-Certificate",
+      "ADCS-Enroll-Web-Svc",
+      "ADCS-Web-Enrollment",
+      "ADCS-Cert-Authority"
     ],
     "DC_PSPackages": [
       "ActiveDirectoryDsc",
@@ -63,9 +75,43 @@
       },
       "DHCP": {
         "IPStart": "100",
-        "IPEnd": ".150",
+        "IPEnd": "150",
         "Name": "CyberSolve-Site"
-      }
+      },
+      "DNS": {
+        "Forwarders": [
+          "8.8.8.8"
+        ]
+      },
+      "ADOU": [
+        {
+          "Name": "Domain Users",
+          "Path": "DC=cybersolve,DC=lab",
+          "Description": "Domain Users"
+        },
+        {
+          "Name": "Service Accounts",
+          "Path": "OU=Domain Users,DC=cybersolve,DC=lab",
+          "Description": "Service Accounts"
+        },
+        {
+          "Name": "Privileged Accounts",
+          "Path": "OU=Domain Users,DC=cybersolve,DC=lab",
+          "Description": "Privileged Accounts"
+        },
+        {
+          "Name": "Domain Groups",
+          "Path": "DC=cybersolve,DC=lab",
+          "Description": "Domain Groups"
+        }
+      ],
+      "ADGroups": [
+        {
+          "GroupName": "GSG-SQL-SQL Administrators",
+          "Path": "OU=Domain Groups,DC=cybersolve,DC=lab",
+          "Description": "Will provide SA access on SQL instances"
+        }
+      ]
     }
   },
   "automatic": {
@@ -89,10 +135,10 @@
         "distributed": false,
         "encryption_level": 256,
         "foreground_application_boost": 2,
-        "install_date": "20230818201636.000000+000",
+        "install_date": "20230821223353.000000+000",
         "large_system_cache": null,
-        "last_boot_up_time": "20230818202225.500000+000",
-        "local_date_time": "20230818202410.540000+000",
+        "last_boot_up_time": "20230821224255.500000+000",
+        "local_date_time": "20230821224606.144000+000",
         "locale": "0409",
         "manufacturer": "Microsoft Corporation",
         "max_number_of_processes": -1,
@@ -102,7 +148,7 @@
         ],
         "name": "Microsoft Windows Server 2022 Standard Evaluation|C:\\Windows|\\Device\\Harddisk0\\Partition3",
         "number_of_licensed_users": 0,
-        "number_of_processes": 56,
+        "number_of_processes": 54,
         "number_of_users": 4,
         "operating_system_sku": 79,
         "organization": "gusztavvargadr",
@@ -118,7 +164,7 @@
         "primary": true,
         "product_type": 2,
         "registered_user": "",
-        "serial_number": "00454-40000-00001-AA448",
+        "serial_number": "00454-40000-00001-AA132",
         "service_pack_major_version": 0,
         "service_pack_minor_version": 0,
         "size_stored_in_paging_files": "1179648",
@@ -217,18 +263,18 @@
     "memory": {
       "swap": {
         "total": "1179648kB",
-        "free": "1122636kB"
+        "free": "1118516kB"
       },
       "total": "2080452kB",
-      "free": "808096kB"
+      "free": "853136kB"
     },
     "network": {
       "interfaces": {
-        "0x3": {
+        "0x6": {
           "configuration": {
             "ip_address": [
               "10.0.2.15",
-              "fe80::5e15:878:1fae:b905"
+              "fe80::6de3:4f04:15f2:6ad0"
             ],
             "arp_always_source_route": null,
             "arp_use_ether_snap": null,
@@ -242,8 +288,8 @@
             "default_ttl": null,
             "description": "Intel(R) PRO/1000 MT Desktop Adapter",
             "dhcp_enabled": true,
-            "dhcp_lease_expires": "20230819202232.000000+000",
-            "dhcp_lease_obtained": "20230818202232.000000+000",
+            "dhcp_lease_expires": "20230822224300.000000+000",
+            "dhcp_lease_obtained": "20230821224300.000000+000",
             "dhcp_server": "10.0.2.2",
             "dns_domain": "gha.chartermi.net",
             "dns_domain_suffix_search_order": [
@@ -263,7 +309,7 @@
             ],
             "igmp_level": null,
             "index": 1,
-            "interface_index": 3,
+            "interface_index": 6,
             "ip_connection_metric": 25,
             "ip_enabled": true,
             "ip_filter_security_enabled": false,
@@ -296,7 +342,7 @@
             "pmtubh_detect_enabled": null,
             "pmtu_discovery_enabled": null,
             "service_name": "E1G60",
-            "setting_id": "{104C3B85-E590-4702-993B-25578BD6CF56}",
+            "setting_id": "{F09F9946-E744-4FCA-AAC7-C128411083B3}",
             "tcpip_netbios_options": 0,
             "tcp_max_connect_retransmissions": null,
             "tcp_max_data_retransmissions": null,
@@ -321,11 +367,11 @@
             "device_id": "1",
             "error_cleared": null,
             "error_description": null,
-            "guid": "{104C3B85-E590-4702-993B-25578BD6CF56}",
+            "guid": "{F09F9946-E744-4FCA-AAC7-C128411083B3}",
             "index": 1,
             "install_date": null,
             "installed": true,
-            "interface_index": 3,
+            "interface_index": 6,
             "last_error_code": null,
             "mac_address": "08:00:27:62:23:2D",
             "manufacturer": "Intel",
@@ -347,7 +393,7 @@
             "status": null,
             "status_info": null,
             "system_name": "DC",
-            "time_of_last_reset": "20230818202225.500000+000"
+            "time_of_last_reset": "20230821224255.500000+000"
           },
           "counters": {
 
@@ -359,7 +405,7 @@
               "broadcast": "10.0.2.255",
               "family": "inet"
             },
-            "fe80::5e15:878:1fae:b905": {
+            "fe80::6de3:4f04:15f2:6ad0": {
               "prefixlen": "64",
               "family": "inet6",
               "scope": "Link"
@@ -381,11 +427,11 @@
           },
           "encapsulation": "Ethernet"
         },
-        "0x4": {
+        "0x5": {
           "configuration": {
             "ip_address": [
               "172.31.10.10",
-              "fe80::ecff:61a5:ef39:1ed7"
+              "fe80::580d:77e2:3a0f:b042"
             ],
             "arp_always_source_route": null,
             "arp_use_ether_snap": null,
@@ -416,7 +462,7 @@
             "gateway_cost_metric": null,
             "igmp_level": null,
             "index": 2,
-            "interface_index": 4,
+            "interface_index": 5,
             "ip_connection_metric": 25,
             "ip_enabled": true,
             "ip_filter_security_enabled": false,
@@ -443,13 +489,13 @@
             "ipx_virtual_net_number": null,
             "keep_alive_interval": null,
             "keep_alive_time": null,
-            "mac_address": "08:00:27:B4:A2:EA",
+            "mac_address": "08:00:27:56:3D:FA",
             "mtu": null,
             "num_forward_packets": null,
             "pmtubh_detect_enabled": null,
             "pmtu_discovery_enabled": null,
             "service_name": "E1G60",
-            "setting_id": "{2685BDAF-8933-480F-BA2A-127AE46369F0}",
+            "setting_id": "{AD0945E4-E12C-4EBC-8315-351712C92E07}",
             "tcpip_netbios_options": 0,
             "tcp_max_connect_retransmissions": null,
             "tcp_max_data_retransmissions": null,
@@ -474,13 +520,13 @@
             "device_id": "2",
             "error_cleared": null,
             "error_description": null,
-            "guid": "{2685BDAF-8933-480F-BA2A-127AE46369F0}",
+            "guid": "{AD0945E4-E12C-4EBC-8315-351712C92E07}",
             "index": 2,
             "install_date": null,
             "installed": true,
-            "interface_index": 4,
+            "interface_index": 5,
             "last_error_code": null,
-            "mac_address": "08:00:27:B4:A2:EA",
+            "mac_address": "08:00:27:56:3D:FA",
             "manufacturer": "Intel",
             "max_number_controlled": 0,
             "max_speed": null,
@@ -500,7 +546,7 @@
             "status": null,
             "status_info": null,
             "system_name": "DC",
-            "time_of_last_reset": "20230818202225.500000+000"
+            "time_of_last_reset": "20230821224255.500000+000"
           },
           "counters": {
 
@@ -512,12 +558,12 @@
               "broadcast": "172.31.10.255",
               "family": "inet"
             },
-            "fe80::ecff:61a5:ef39:1ed7": {
+            "fe80::580d:77e2:3a0f:b042": {
               "prefixlen": "64",
               "family": "inet6",
               "scope": "Link"
             },
-            "08:00:27:B4:A2:EA": {
+            "08:00:27:56:3D:FA": {
               "family": "lladdr"
             }
           },
@@ -533,7 +579,7 @@
         }
       },
       "default_gateway": "10.0.2.2",
-      "default_interface": "0x3"
+      "default_interface": "0x6"
     },
     "counters": {
       "network": {
@@ -542,14 +588,14 @@
     },
     "ipaddress": "10.0.2.15",
     "macaddress": "08:00:27:62:23:2D",
-    "ip6address": "fe80::5e15:878:1fae:b905",
+    "ip6address": "fe80::580d:77e2:3a0f:b042",
     "os": "windows",
     "os_version": "10.0.20348",
     "platform": "windows",
     "platform_version": "10.0.20348",
     "platform_family": "windows",
-    "uptime_seconds": 106,
-    "uptime": "1 minutes 46 seconds",
+    "uptime_seconds": 191,
+    "uptime": "3 minutes 11 seconds",
     "dmi": {
       "chassis": {
         "all_records": [
@@ -632,7 +678,7 @@
             "L3CacheSpeed": 0,
             "LastErrorCode": null,
             "Level": 25,
-            "LoadPercentage": null,
+            "LoadPercentage": 1,
             "Manufacturer": "AuthenticAMD",
             "MaxClockSpeed": 3700,
             "Name": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -742,13 +788,13 @@
             "IdentifyingNumber": "0",
             "Name": "VirtualBox",
             "SKUNumber": null,
-            "UUID": "8626AC53-35D7-43B9-8160-5DA552600C49",
+            "UUID": "F7997532-A8C8-40D6-9AF8-C6D14FE8FF49",
             "Vendor": "innotek GmbH",
             "Version": "1.2"
           }
         ],
         "description": "Computer System Product",
-        "uuid": "8626AC53-35D7-43B9-8160-5DA552600C49",
+        "uuid": "F7997532-A8C8-40D6-9AF8-C6D14FE8FF49",
         "version": "1.2",
         "manufacturer": "innotek GmbH",
         "serial_number": "0",
@@ -880,8 +926,8 @@
       "by_device": {
         "": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "fs_type": "ntfs",
           "drive_type": 3,
@@ -896,8 +942,8 @@
       "by_mountpoint": {
         "C:": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "fs_type": "ntfs",
           "drive_type": 3,
@@ -912,8 +958,8 @@
       "by_pair": {
         ",C:": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "mount": "C:",
           "fs_type": "ntfs",
@@ -929,8 +975,8 @@
       "by_device": {
         "": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "fs_type": "ntfs",
           "drive_type": 3,
@@ -945,8 +991,8 @@
       "by_mountpoint": {
         "C:": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "fs_type": "ntfs",
           "drive_type": 3,
@@ -961,8 +1007,8 @@
       "by_pair": {
         ",C:": {
           "kb_size": 135704604,
-          "kb_available": 124449722,
-          "kb_used": 11254882,
+          "kb_available": 124472197,
+          "kb_used": 11232407,
           "percent_used": 8,
           "mount": "C:",
           "fs_type": "ntfs",
@@ -984,7 +1030,7 @@
 
       }
     },
-    "ohai_time": 1692390267.7152746,
+    "ohai_time": 1692657972.3146465,
     "packages": {
       "Oracle VM VirtualBox Guest Additions 6.1.46": {
         "version": "6.1.46.0",
@@ -997,13 +1043,13 @@
       }
     },
     "root_group": "Administrators",
-    "shard_seed": 91319350,
+    "shard_seed": 8685056,
     "time": {
       "timezone": "Coordinated Universal Time"
     },
     "virtualbox": {
       "host": {
-        "language": "en_US",
+        "language": "C",
         "revision": "158379",
         "version": "7.0.10"
       },
@@ -1016,26 +1062,25 @@
       "manufacturer": "Oracle Corporation",
       "serialnumber": ""
     },
-    "chef_guid": "675ebc58-86ee-4a49-9a67-8d92111f5195",
+    "chef_guid": "eefae11b-be1a-4f26-8736-3778370625bf",
     "name": "dc",
     "chef_environment": "_default",
     "recipes": [
-      "deploy_dc",
-      "deploy_dc::default"
+      "cs_lab::deploy_dc"
     ],
     "expanded_run_list": [
-      "deploy_dc::default"
+      "cs_lab::deploy_dc"
     ],
     "roles": [
 
     ],
     "cookbooks": {
-      "deploy_dc": {
+      "cs_lab": {
         "version": "0.1.0"
       }
     }
   },
   "run_list": [
-    "recipe[deploy_dc]"
+    "recipe[cs_lab::deploy_dc]"
   ]
 }
