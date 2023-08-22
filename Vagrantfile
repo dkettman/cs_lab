@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "admin" do |admin|
     admin.vm.box = "gusztavvargadr/windows-server"
+    admin.vm.hostname = "admin"
     admin.vm.network "private_network", ip: "172.31.10.15", virtualbox__intnet: "NATNetwork"
     admin.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     admin.vm.provision :reload

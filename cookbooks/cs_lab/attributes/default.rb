@@ -33,6 +33,11 @@ default['DC_PSPackages'] = [
   "xPSDesiredStateConfiguration"
 ]
 
+default['ADJoin_PSPackages'] = [
+  "ComputerManagementDsc",
+  "NetworkingDsc"
+]
+
 default['SiteData'] = {
 
   # Common Variables
