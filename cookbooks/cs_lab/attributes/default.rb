@@ -38,6 +38,11 @@ default['ADJoin_PSPackages'] = [
   "NetworkingDsc"
 ]
 
+default['SQL_PSPackages'] = [
+  "SqlServerDsc",
+  "StorageDsc"
+]
+
 default['SiteData'] = {
 
   # Common Variables
@@ -94,5 +99,17 @@ default['SiteData'] = {
       "Path" => 'OU=Domain Groups,DC=cybersolve,DC=lab',
       "Description" => "Will provide SA access on SQL instances"
     }
-  ]
+  ],
+  "SQL" => {
+    "SQLDownloadURL" => 'https://go.microsoft.com/fwlink/p/?linkid=2215158&clcid=0x409&culture=en-us&country=us',
+    "SMSDownloadURL" => 'https://aka.ms/ssmsfullsetup',
+    "Instances" => [
+      "SECRETSERVER",
+      "DIRECTAUDIT"
+    ],
+    "SQLAdministrators" => [
+      'cybersolve\administrator',
+      'cybersolve\vagrant'
+    ]
+  }
 }

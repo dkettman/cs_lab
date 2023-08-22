@@ -24,3 +24,12 @@ dsc_resource "Join domain: #{node['SiteData']['ADDomain']['DomainFQDN']}" do
   property :credential, ps_credential("#{node['SiteData']['ADDomain']['DomainShort']}\\vagrant",'vagrant')
   property :name, node['hostname'] 
 end
+
+['Public','Private','Domain'].each do |profile|
+  dsc_resource "FW: #{profile}" do
+    resource :firewallprofile
+    property :name, profile
+    property :enabled, "False"
+  end
+end
+
