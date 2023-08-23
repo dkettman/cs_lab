@@ -1,2 +1,9 @@
 .vagrant/
+vagrant
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
 *~
