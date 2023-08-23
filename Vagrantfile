@@ -11,11 +11,13 @@ Vagrant.configure("2") do |config|
     vb.linked_clone = true
   end
 
-  config.trigger.after :destroy do |teardown|
+  config.vm.provider "hyperv" do |hyperv|
+    hyperv.linked_clone = true
+  end
+
+  config.trigger.before :destroy do |teardown|
     teardown.name = "Teardown VM"
-    teardown.info = "Tearing Down VM"
-    teardown.run_remote = { inline: "Remove-Computer" }
-    teardown.only_on !~ /^dc$/
+    teardown.info = "DIE! DIE! DIE!"
   end
 
   # Domain Controller
@@ -41,13 +43,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "sql" do |sql|
     sql.vm.box = "gusztavvargadr/windows-server-core"
-    # sql.vm.box = "gusztavvargadr/windows-server"
     sql.vm.hostname = "sql"
     sql.vm.network "private_network", ip: "172.31.10.20", virtualbox__intnet: "NATNetwork"
     sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     sql.vm.provision :reload
     sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::install_sql]" end
-
   end
   
 end
