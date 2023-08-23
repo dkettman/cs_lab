@@ -29,15 +29,15 @@ Vagrant.configure("2") do |config|
     admin.vm.network "private_network", ip: "172.31.10.15", virtualbox__intnet: "NATNetwork"
     admin.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     admin.vm.provision :reload
+    admin.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::install_ssms]" end
   end
 
   config.vm.define "sql" do |sql|
     sql.vm.box = "gusztavvargadr/windows-server-core"
     sql.vm.hostname = "sql"
     sql.vm.network "private_network", ip: "172.31.10.20", virtualbox__intnet: "NATNetwork"
-    sql.vm.disk :disk, size: "10GB", name: "db_storage"
-    # sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
-    # sql.vm.provision :reload
+    sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
+    sql.vm.provision :reload
     sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::install_sql]" end
 
   end
