@@ -108,8 +108,10 @@ default['SiteData'] = {
       "DIRECTAUDIT"
     ],
     "SQLAdministrators" => [
-      'cybersolve\administrator',
-      'cybersolve\vagrant'
+      # "#{node['SiteData']['ADDomain']['DomainShort']}\\Administrator",
+      # "#{node['SiteData']['ADDomain']['DomainShort']}\\GSG-SQL-SQL Administrators"
+      'CYBERSOLVE\Administrator',
+      'CYBERSOLVE\GSG-SQL-SQL Administrators'
     ]
   }
 }

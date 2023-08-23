@@ -22,6 +22,7 @@ dsc_resource "Join domain: #{node['SiteData']['ADDomain']['DomainFQDN']}" do
   resource :computer
   property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
   property :credential, ps_credential("#{node['SiteData']['ADDomain']['DomainShort']}\\vagrant",'vagrant')
+  property :options, ["InstallInvoke"]
   property :name, node['hostname'] 
 end
 

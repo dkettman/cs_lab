@@ -11,6 +11,13 @@ Vagrant.configure("2") do |config|
     vb.linked_clone = true
   end
 
+  config.trigger.after :destroy do |teardown|
+    teardown.name = "Teardown VM"
+    teardown.info = "Tearing Down VM"
+    teardown.run_remote = { inline: "Remove-Computer" }
+    teardown.only_on !~ /^dc$/
+  end
+
   # Domain Controller
   # This box has an IP defined out of the gate since it should always have the same static IP
   config.vm.define "dc" do |dc|
@@ -34,6 +41,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "sql" do |sql|
     sql.vm.box = "gusztavvargadr/windows-server-core"
+    # sql.vm.box = "gusztavvargadr/windows-server"
     sql.vm.hostname = "sql"
     sql.vm.network "private_network", ip: "172.31.10.20", virtualbox__intnet: "NATNetwork"
     sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
