@@ -49,7 +49,8 @@ node['SiteData']['SQL']['Instances'].each do |sql|
     property :sourcepath, 'I:'
     property :features, 'SQLENGINE,FULLTEXT'
     property :instancename, sql
-    property :sqlsysadminaccounts, ['CYBERSOLVE\Administrator','CYBERSOLVE\GSG-SQL-SQL Administrators']
+    # property :sqlsysadminaccounts, ['CYBERSOLVE\Administrator','CYBERSOLVE\GSG-SQL-SQL Administrators']
+    property :sqlsysadminaccounts, node['SiteData']['SQL']['SQLAdministrators']
     property :securitymode, 'SQL'
     property :sapwd, ps_credential(node['SiteData']['DefaultPassword'])
     property :npenabled, true

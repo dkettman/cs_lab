@@ -110,8 +110,8 @@ default['SiteData'] = {
     "SQLAdministrators" => [
       # "#{node['SiteData']['ADDomain']['DomainShort']}\\Administrator",
       # "#{node['SiteData']['ADDomain']['DomainShort']}\\GSG-SQL-SQL Administrators"
-      'CYBERSOLVE\Administrator',
-      'CYBERSOLVE\GSG-SQL-SQL Administrators'
+      'cybersolve\administrator',
+      'cybersolve\GSG-SQL-SQL Administrators'
     ]
   }
 }
