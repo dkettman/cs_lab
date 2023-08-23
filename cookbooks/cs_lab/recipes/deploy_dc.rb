@@ -22,9 +22,9 @@ end
 
 dsc_resource node['SiteData']['ADDomain']['DomainFQDN'] do
   resource :addomain
-  property :credential, ps_credential('vagrant','vagrant')
+  property :credential, ps_credential('vagrant', 'vagrant')
   property :safemodeadministratorpassword, ps_credential(node['SiteData']['DefaultPassword'])
-  property :forestmode, "WinThreshold"
+  property :forestmode, 'WinThreshold'
   property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
   property :domainnetbiosname, node['SiteData']['ADDomain']['DomainShort']
 end

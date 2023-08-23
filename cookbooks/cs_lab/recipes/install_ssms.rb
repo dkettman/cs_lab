@@ -12,6 +12,6 @@ end
 windows_package 'SQL Server Management Studio' do
   source 'https://aka.ms/ssmsfullsetup'
   action :install
-  remote_file_attributes ({ :path => 'C:\Temp\SSMS-Setup-ENU.exe' })
+  remote_file_attributes({ path: 'C:\Temp\SSMS-Setup-ENU.exe' })
   options '/Install /Quiet'
 end

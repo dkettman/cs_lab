@@ -17,7 +17,7 @@ dsc_resource 'CertificationAuthority' do
   resource :adcscertificationauthority
   property :issingleinstance, 'Yes'
   property :ensure, 'Present'
-  property :credential, ps_credential('vagrant','vagrant')
+  property :credential, ps_credential('vagrant', 'vagrant')
   property :catype, 'EnterpriseRootCA'
 end
 
@@ -40,4 +40,3 @@ node['SiteData']['ADGroups'].each do |group|
     property :ensure, 'Present'
   end
 end
-

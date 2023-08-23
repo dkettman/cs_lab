@@ -3,7 +3,6 @@ maintainer 'Dave Kettmann'
 maintainer_email 'dkettmann@cybersolve.com'
 license 'All Rights Reserved'
 description 'Installs/Configures CyberSolve Lab'
-long_description 'Installs/Configures CyberSolve Lab'
 version '0.1.0'
 chef_version '>= 14.0'
 

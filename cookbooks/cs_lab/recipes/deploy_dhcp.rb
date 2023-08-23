@@ -15,13 +15,13 @@ end
 
 dsc_resource 'DHCPScope' do
   resource :xdhcpserverscope
-  property :scopeid, node['SiteData']['Network']['Network']+".0"
+  property :scopeid, node['SiteData']['Network']['Network'] + '.0'
   property :ipstartrange, "#{node['SiteData']['Network']['Network']}.#{node['SiteData']['DHCP']['IPStart']}"
   property :ipendrange, "#{node['SiteData']['Network']['Network']}.#{node['SiteData']['DHCP']['IPEnd']}"
   property :name, node['SiteData']['DHCP']['Name']
   property :subnetmask, node['SiteData']['Network']['Subnet']
-  property :leaseduration, "08:00:00" # 8 Hours
-  property :state, "Active"
+  property :leaseduration, '08:00:00' # 8 Hours
+  property :state, 'Active'
   property :addressfamily, 'IPv4'
 end
 

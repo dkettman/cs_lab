@@ -36,11 +36,11 @@ powershell_script 'Extract SQL ISO' do
   code 'C:\Temp\SQL2022-SSEI-Dev.exe /Action=Download /MediaPath=C:\Temp\SQL /MT=ISO /q /hp'
   only_if 'Test-Path "C:\Temp\SQL2022-SSEI-Dev.exe"'
 end
-  
+
 dsc_resource 'SQL: Mount ISO' do
   resource :mountimage
   property :imagepath, 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso'
-  property :driveletter, "I"
+  property :driveletter, 'I'
 end
 
 node['SiteData']['SQL']['Instances'].each do |sql|
