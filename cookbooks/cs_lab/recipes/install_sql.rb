@@ -43,17 +43,16 @@ dsc_resource 'SQL: Mount ISO' do
   property :driveletter, "I"
 end
 
-# node['SiteData']['SQL']['Instances'].each do |sql|
-#   dsc_resource "SQL: Instance: #{sql}" do
-#     resource :sqlsetup
-#     property :sourcepath, 'I:'
-#     property :features, 'SQLENGINE,FULLTEXT'
-#     property :instancename, sql
-#     # property :sqlsysadminaccounts, ["#{node['SiteData']['ADDomain']['DomainShort']}\\vagrant"]
-#     property :sqlsysadminaccounts, 
-#     property :securitymode, 'SQL'
-#     property :sapwd, ps_credential(node['SiteData']['DefaultPassword'])
-#     property :npenabled, true
-#     property :tcpenabled, true
-#   end
-# end
+node['SiteData']['SQL']['Instances'].each do |sql|
+  dsc_resource "SQL: Instance: #{sql}" do
+    resource :sqlsetup
+    property :sourcepath, 'I:'
+    property :features, 'SQLENGINE,FULLTEXT'
+    property :instancename, sql
+    property :sqlsysadminaccounts, ['CYBERSOLVE\Administrator','CYBERSOLVE\GSG-SQL-SQL Administrators']
+    property :securitymode, 'SQL'
+    property :sapwd, ps_credential(node['SiteData']['DefaultPassword'])
+    property :npenabled, true
+    property :tcpenabled, true
+  end
+end
