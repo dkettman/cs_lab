@@ -31,6 +31,10 @@ Vagrant.configure("2") do |config|
       v.memory = 1024
       v.cpus = 1
     end
+    dc.vm.provider "hyperv" do |hyperv|
+      hyperv.memory = 1024
+      hyperv.cpus = 1
+    end
     dc.vm.network "private_network", ip: "172.31.10.10", virtualbox__intnet: "NATNetwork"
     dc.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::deploy_dc]" end
     dc.vm.provision :reload
@@ -48,6 +52,10 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
+    admin.vm.provider "hyperv" do |hyperv|
+      hyperv.memory = 1024
+      hyperv.cpus = 1
+    end
     admin.vm.network "private_network", ip: "172.31.10.15", virtualbox__intnet: "NATNetwork"
     admin.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     admin.vm.provision :reload
@@ -63,6 +71,10 @@ Vagrant.configure("2") do |config|
       v.memory = 4096
       v.cpus = 2
     end
+    sql.vm.provider "hyperv" do |hyperv|
+      hyperv.memory = 1024
+      hyperv.cpus = 1
+    end
     sql.vm.network "private_network", ip: "172.31.10.20", virtualbox__intnet: "NATNetwork"
     sql.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     sql.vm.provision :reload
@@ -77,6 +89,10 @@ Vagrant.configure("2") do |config|
     util.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
+    end
+    util.vm.provider "hyperv" do |hyperv|
+      hyperv.memory = 1024
+      hyperv.cpus = 1
     end
     util.vm.network "private_network", ip: "172.31.10.25", virtualbox__intnet: "NATNetwork"
     util.vm.provision "chef_solo" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
