@@ -27,7 +27,7 @@ Check out the files in cookbooks/cs_lab/recipies for the recipies. You can chang
 | Provider | OS | Tested |
 | ---------|----|--------|
 | VirtualBox | Linux | ✔ |
-| | Windows 10 |  ✔ |
+| VirtualBox | Windows 10 |  ✔ |
 | Hyper-V | Windows 10 | ✔ |
 
 In theory, this Vagrantfile should work on Virtualbox, Hyper-V, and VMware Workstation. I do not have VMware Workstation available to me, so I have not tested it.
