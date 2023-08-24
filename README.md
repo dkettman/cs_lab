@@ -53,3 +53,14 @@ If you would like to just re-run the provisioning because a recipe was updated o
 ```
 vagrant provision <box_name>
 ```
+
+# Clean up!
+If you want to completely rip all of this out, run the following commands, these **should** work for any provider.
+```
+vagrant destroy --force
+vagrant box purge
+```
+
+This will stop and delete all VMs then remove the base boxes to free up that disk space. Note, if you remove the boxes prior to destroying the VMs, they will not boot and Vagrant will more than likely be very cross with you.
+
+Once that is done, you can remove this repository directory. You might go directly into VirtualBox or Hyper-V and make sure everything is cleaned up, but it should be fine.
