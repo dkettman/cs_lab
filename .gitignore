@@ -1,4 +1,5 @@
 .vagrant/
+.vagrant-linux/
 vagrant
 *~
 *#
@@ -7,3 +8,4 @@ vagrant
 .*.sw[a-z]
 *.un~
 *~
+*zip
