@@ -26,8 +26,8 @@ After cloning this repository to your local machine, you will have the core piec
 - /Vagrantfile
   - This file describes all of the boxes and does some base configuration along with declaring what recipes will be executed on each box.
 - /cookbooks/cs_lab/recipes/*rb
-  - Each file is a "recipe" and contains multiple resources. Each file is read in order^* and executed.
-    - ^* - If there is any bare Ruby code in the recipe, that will be executed ahead of everything else.
+  - Each file is a "recipe" and contains multiple resources. Each file is read in order<sup>*</sup> and executed.
+    - <sup>*</sup> - If there is any bare Ruby code in the recipe, that will be executed ahead of everything else.
 - /cookbooks/cs_lab/attributes/default.rb
   - This is where any repeatable data is stored along with some configuration data. More on this later
 
