@@ -23,12 +23,12 @@ This one is sort of an honorable mention. Initially when I wanted to build this 
 Ok, you made it through that drivel, now on to the meat and potatoes! This is going to progressively get deeper and deeper into the weeds, so proceed with caution!
 
 After cloning this repository to your local machine, you will have the core pieces of this project:
-- /Vagrantfile
+- (Vagrantfile)
   - This file describes all of the boxes and does some base configuration along with declaring what recipes will be executed on each box.
-- /cookbooks/cs_lab/recipes/*rb
+- (cookbooks/cs_lab/recipes/)
   - Each file is a "recipe" and contains multiple resources. Each file is read in order<sup>*</sup> and executed.
     - <sup>*</sup> - If there is any bare Ruby code in the recipe, that will be executed ahead of everything else.
-- /cookbooks/cs_lab/attributes/default.rb
+- (cookbooks/cs_lab/attributes/default.rb)
   - This is where any repeatable data is stored along with some configuration data. More on this later
 
 Once cloned, one additional step needs to be completed. Initially, Chef and Vagrant were intended for Linux virtual machines. Since we are working with Windows vms, some things just don't flow as nicely as they should (of course!). We will need the `vagrant-reload` plugin. This will trigger the VM to reload and Vagrant will continue on the provisioning from there. If we try to use a Chef automated restart, Vagrant gets grumpy and causes issues. In order to install this plugin, simply run:
