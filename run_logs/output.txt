@@ -1,0 +1,1700 @@
+PS D:\users\work\Documents\repos\cs_lab> vagrant up dc
+Bringing machine 'dc' up with 'virtualbox' provider...
+==> dc: Preparing master VM for linked clones...
+    dc: This is a one time operation. Once the master VM is prepared,
+    dc: it will be used as a base for linked clones, making the creation
+    dc: of new VMs take milliseconds on a modern system.
+==> dc: Importing base box 'gusztavvargadr/windows-server-core'...
+==> dc: Cloning VM...
+==> dc: Matching MAC address for NAT networking...
+==> dc: Checking if box 'gusztavvargadr/windows-server-core' version '2102.0.2308' is up to date...
+==> dc: Setting the name of the VM: cs_lab_dc_1693058061971_89963
+==> dc: Using hostname "dc" as node name for Chef...
+==> dc: Using hostname "dc" as node name for Chef...
+==> dc: Clearing any previously set network interfaces...
+==> dc: Preparing network interfaces based on configuration...
+    dc: Adapter 1: nat
+    dc: Adapter 2: intnet
+==> dc: Forwarding ports...
+    dc: 3389 (guest) => 53389 (host) (adapter 1)
+    dc: 5985 (guest) => 55985 (host) (adapter 1)
+    dc: 5986 (guest) => 55986 (host) (adapter 1)
+    dc: 22 (guest) => 2222 (host) (adapter 1)
+==> dc: Running 'pre-boot' VM customizations...
+==> dc: Booting VM...
+==> dc: Waiting for machine to boot. This may take a few minutes...
+    dc: WinRM address: 127.0.0.1:55985
+    dc: WinRM username: vagrant
+    dc: WinRM execution_time_limit: PT2H
+    dc: WinRM transport: plaintext
+==> dc: Machine booted and ready!
+==> dc: Setting hostname...
+==> dc: Waiting for machine to reboot...
+==> dc: Configuring and enabling network interfaces...
+==> dc: Mounting shared folders...
+    dc: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    dc: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> dc: Running provisioner: chef_solo...
+==> dc: Detected Chef (latest) is already installed
+==> dc: Generating chef JSON and uploading...
+==> dc: Running chef-solo...
+==> dc: [2023-08-26T13:57:29+00:00] INFO: Persisting a license for Chef Infra Client at path C:/Users/vagrant/.chef/accepted_licenses/chef_infra_client
+==> dc: [2023-08-26T13:57:29+00:00] INFO: Persisting a license for Chef InSpec at path C:/Users/vagrant/.chef/accepted_licenses/inspec
+==> dc: [2023-08-26T13:57:31+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> dc: Chef Infra Client, version 18.2.7
+==> dc: Patents: https://www.chef.io/patents
+==> dc: Infra Phase starting
+==> dc: [2023-08-26T13:57:31+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> dc: [2023-08-26T13:57:31+00:00] INFO: Platform: x64-mingw-ucrt
+==> dc: [2023-08-26T13:57:31+00:00] INFO: Chef-client pid: 2376
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Setting the run_list to ["recipe[cs_lab::deploy_dc]"] from CLI options
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Run List is [recipe[cs_lab::deploy_dc]]
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Run List expands to [cs_lab::deploy_dc]
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Starting Chef Infra Client Run for dc
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Running start handlers
+==> dc: [2023-08-26T13:57:43+00:00] INFO: Start handlers complete.
+==> dc: Resolving cookbooks for run list: ["cs_lab::deploy_dc"]
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> dc: Synchronizing cookbooks:
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/chefignore in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/attributes/default.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/LICENSE in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dc.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_ad.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dns.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dhcp.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/metadata.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_ssms.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_sql.rb in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/README.md in the cache.
+==> dc: [2023-08-26T13:57:45+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/join_domain.rb in the cache.
+==> dc:   - cs_lab (0.1.0)
+==> dc: Installing cookbook gem dependencies:
+==> dc: Compiling cookbooks...
+==> dc: Loading Chef InSpec profile files:
+==> dc: Loading Chef InSpec input files:
+==> dc: Loading Chef InSpec waiver files:
+==> dc: Converging 13 resources
+==> dc: Recipe: cs_lab::deploy_dc
+==> dc:   * powershell_package[ActiveDirectoryDsc] action install
+==> dc:     - install version 6.3.0 of package ActiveDirectoryDsc
+==> dc:   * powershell_package[ActiveDirectoryCSDsc] action install
+==> dc:     - install version 5.0.0 of package ActiveDirectoryCSDsc
+==> dc:   * powershell_package[ComputerManagementDsc] action install
+==> dc:     - install version 9.0.0 of package ComputerManagementDsc
+==> dc:   * powershell_package[DnsServerDsc] action install
+==> dc:     - install version 3.0.0 of package DnsServerDsc
+==> dc:   * powershell_package[NetworkingDsc] action install
+==> dc:     - install version 9.0.0 of package NetworkingDsc
+==> dc:   * powershell_package[StorageDsc] action install
+==> dc:     - install version 5.1.0 of package StorageDsc
+==> dc:   * powershell_package[xDhcpServer] action install
+==> dc:     - install version 3.1.1 of package xDhcpServer
+==> dc:   * powershell_package[xPSDesiredStateConfiguration] action install
+==> dc:     - install version 9.1.0 of package xPSDesiredStateConfiguration
+==> dc:   * dsc_resource[WF_AD-Domain-Services] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: AD-Domain-Services
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: AD-Domain-Services
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 1.3040 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  4.1450 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 4.914 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature AD-Domain-Services.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 22.7890 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  22.7900 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 22.515 seconds
+==> dc:   * dsc_resource[WF_GPMC] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: GPMC
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: GPMC
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 0.1420 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.1630 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.261 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature GPMC.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 13.1480 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  13.1480 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 13.034 seconds
+==> dc:   * dsc_resource[cybersolve.lab] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADDomain]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] The domain 'cybersolve.lab' is NOT in the desired state. (ADD0009)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADDomain]DirectResourceAccess] False in 0.1540 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.5520 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.591 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADDomain]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Creating AD forest 'cybersolve.lab'. (ADD0006)
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Active Directory Domain Services Setup
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Validating environment and parameters...
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] ----------------------------------------
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] The following actions will be performed:
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Configure this server as the first Active Directory domain controller in a new forest.
+==> dc:
+==> dc:     The new domain name is "cybersolve.lab". This is also the name of the new forest.
+==> dc:
+==> dc:     The NetBIOS name of the domain is "CYBERSOLVE".
+==> dc:
+==> dc:     Forest Functional Level: Windows Server 2022
+==> dc:
+==> dc:     Domain Functional Level: Windows Server 2022
+==> dc:
+==> dc:     Site: Default-First-Site-Name
+==> dc:
+==> dc:     Additional Options:
+==> dc:       Read-only domain controller: "No"
+==> dc:       Global catalog: Yes
+==> dc:       DNS Server: Yes
+==> dc:
+==> dc:     Create DNS Delegation: No
+==> dc:
+==> dc:     Database folder: C:\Windows\NTDS
+==> dc:     Log file folder: C:\Windows\NTDS
+==> dc:     SYSVOL folder: C:\Windows\SYSVOL
+==> dc:
+==> dc:     The DNS Server service will be installed on this computer.
+==> dc:     The DNS Server service will be configured on this computer.
+==> dc:     This computer will be configured to use this DNS server as its preferred DNS server.
+==> dc:
+==> dc:     The password of the new domain Administrator will be the same as the password of the local Administrator of this computer.
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] ----------------------------------------
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Active Directory Domain Services Setup
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Validating environment and parameters...
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] ----------------------------------------
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] The following actions will be performed:
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Configure this server as the first Active Directory domain controller in a new forest.
+==> dc:
+==> dc:     The new domain name is "cybersolve.lab". This is also the name of the new forest.
+==> dc:
+==> dc:     The NetBIOS name of the domain is "CYBERSOLVE".
+==> dc:
+==> dc:     Forest Functional Level: Windows Server 2022
+==> dc:
+==> dc:     Domain Functional Level: Windows Server 2022
+==> dc:
+==> dc:     Site: Default-First-Site-Name
+==> dc:
+==> dc:     Additional Options:
+==> dc:       Read-only domain controller: "No"
+==> dc:       Global catalog: Yes
+==> dc:       DNS Server: Yes
+==> dc:
+==> dc:     Create DNS Delegation: No
+==> dc:
+==> dc:     Database folder: C:\Windows\NTDS
+==> dc:     Log file folder: C:\Windows\NTDS
+==> dc:     SYSVOL folder: C:\Windows\SYSVOL
+==> dc:
+==> dc:     The DNS Server service will be installed on this computer.
+==> dc:     The DNS Server service will be configured on this computer.
+==> dc:     This computer will be configured to use this DNS server as its preferred DNS server.
+==> dc:
+==> dc:     The password of the new domain Administrator will be the same as the password of the local Administrator of this computer.
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] ----------------------------------------
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Press CTRL-C to: Cancel
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] Active Directory Domain Services is now installed on this computer for the domain "cybersolve.lab".
+==> dc:
+==> dc:     This Active Directory domain controller is assigned to the site "Default-First-Site-Name". You can manage sites with the Active Directory Sites and Services administrative tool.
+==> dc:     [DC]:                            [[ADDomain]DirectResourceAccess] AD forest 'cybersolve.lab' created. (ADD0007)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADDomain]DirectResourceAccess]  in 77.0750 seconds.
+==> dc:     [DC]:                            [] A reboot is required to progress further. Please reboot the system.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  77.0950 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 77.137 seconds
+==> dc:   * dsc_resource[WF_DNS] action run
+==> dc:   * dsc_resource[SetForwarder] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[DnsServerForwarder]DirectResourceAccess]
+==> dc:     [DC]:                            [[DnsServerForwarder]DirectResourceAccess] Validate IP addresses.
+==> dc:     [DC]:                            [[DnsServerForwarder]DirectResourceAccess] Getting current DNS forwarders.
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[DnsServerForwarder]DirectResourceAccess] False in 2.6900 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  3.0530 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 3.167 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[DnsServerForwarder]DirectResourceAccess]
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[DnsServerForwarder]DirectResourceAccess]  in 0.0000 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0370 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.234 seconds
+==> dc: [2023-08-26T14:00:46+00:00] INFO: Chef Infra Client Run complete in 182.8416137 seconds
+==> dc: Running handlers:
+==> dc: [2023-08-26T14:00:46+00:00] INFO: Running report handlers
+==> dc: Running handlers complete
+==> dc: [2023-08-26T14:00:46+00:00] INFO: Report handlers complete
+==> dc: Infra Phase complete, 12/13 resources updated in 03 minutes 15 seconds
+==> dc: Running provisioner: reload...
+==> dc: Attempting graceful shutdown of VM...
+==> dc: Checking if box 'gusztavvargadr/windows-server-core' version '2102.0.2308' is up to date...
+==> dc: Clearing any previously set forwarded ports...
+==> dc: Clearing any previously set network interfaces...
+==> dc: Preparing network interfaces based on configuration...
+    dc: Adapter 1: nat
+    dc: Adapter 2: intnet
+==> dc: Forwarding ports...
+    dc: 3389 (guest) => 53389 (host) (adapter 1)
+    dc: 5985 (guest) => 55985 (host) (adapter 1)
+    dc: 5986 (guest) => 55986 (host) (adapter 1)
+    dc: 22 (guest) => 2222 (host) (adapter 1)
+==> dc: Running 'pre-boot' VM customizations...
+==> dc: Booting VM...
+==> dc: Waiting for machine to boot. This may take a few minutes...
+    dc: WinRM address: 127.0.0.1:55985
+    dc: WinRM username: vagrant
+    dc: WinRM execution_time_limit: PT2H
+    dc: WinRM transport: plaintext
+==> dc: Machine booted and ready!
+==> dc: Setting hostname...
+==> dc: Configuring and enabling network interfaces...
+==> dc: Mounting shared folders...
+    dc: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    dc: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> dc: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> dc: flag to force provisioning. Provisioners marked to run always will still run.
+==> dc: Running provisioner: chef_solo...
+==> dc: Detected Chef (latest) is already installed
+==> dc: Generating chef JSON and uploading...
+==> dc: Running chef-solo...
+==> dc: [2023-08-26T14:03:08+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> dc: Chef Infra Client, version 18.2.7
+==> dc: Patents: https://www.chef.io/patents
+==> dc: Infra Phase starting
+==> dc: [2023-08-26T14:03:08+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> dc: [2023-08-26T14:03:08+00:00] INFO: Platform: x64-mingw-ucrt
+==> dc: [2023-08-26T14:03:08+00:00] INFO: Chef-client pid: 3384
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Setting the run_list to ["recipe[cs_lab::deploy_dhcp]", "recipe[cs_lab::deploy_ad]"] from CLI options
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Run List is [recipe[cs_lab::deploy_dhcp], recipe[cs_lab::deploy_ad]]
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Run List expands to [cs_lab::deploy_dhcp, cs_lab::deploy_ad]
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Starting Chef Infra Client Run for dc
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Running start handlers
+==> dc: [2023-08-26T14:03:15+00:00] INFO: Start handlers complete.
+==> dc: Resolving cookbooks for run list: ["cs_lab::deploy_dhcp", "cs_lab::deploy_ad"]
+==> dc: [2023-08-26T14:03:16+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> dc: Synchronizing cookbooks:
+==> dc:   - cs_lab (0.1.0)
+==> dc: Installing cookbook gem dependencies:
+==> dc: Compiling cookbooks...
+==> dc: Loading Chef InSpec profile files:
+==> dc: Loading Chef InSpec input files:
+==> dc: Loading Chef InSpec waiver files:
+==> dc: Converging 15 resources
+==> dc: Recipe: cs_lab::deploy_dhcp
+==> dc:   * dsc_resource[WF_DHCP] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: DHCP
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: DHCP
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 6.5740 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  8.6350 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 12.067 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature DHCP.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 16.0210 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  16.0260 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 18.215 seconds
+==> dc:   * dsc_resource[DHCPScope] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[xDhcpServerScope]DirectResourceAccess]
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] Evaluating the server scope with scope id '172.31.10.0' if it is in the desired state.
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] Checking DHCP server scope with the given ScopeId (172.31.10.0).
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] DHCP server scope with the given ScopeId (172.31.10.0) is 'absent' and it should be 'Present'.
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[xDhcpServerScope]DirectResourceAccess] False in 1.6930 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  2.0610 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 2.289 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[xDhcpServerScope]DirectResourceAccess]
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] Changing the server scope with scope id '172.31.10.0' to the desired state.
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] Checking DHCP server scope with the given ScopeId (172.31.10.0).
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] DHCP server scope with the given ScopeId (172.31.10.0) is 'absent' and it should be 'Present'.
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] Adding DHCP server scope with the given ScopeId (172.31.10.0).
+==> dc:     [DC]:                            [[xDhcpServerScope]DirectResourceAccess] DHCP server scope with name 'CyberSolve-Site' is now present.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[xDhcpServerScope]DirectResourceAccess]  in 0.4210 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.4210 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.485 seconds
+==> dc:   * dsc_resource[DHCPRouter] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[DhcpServerOptionValue]DirectResourceAccess]
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Getting DHCP server option value "3" with vendor class "" and user class "".
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] DHCP server option value "3" with vendor class "" and user class "" not found.
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[DhcpServerOptionValue]DirectResourceAccess] False in 0.0340 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.1330 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.223 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[DhcpServerOptionValue]DirectResourceAccess]
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Getting DHCP server option value "3" with vendor class "" and user class "".
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Setting DHCP server option value "3" with vendor class "" and user class "".
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[DhcpServerOptionValue]DirectResourceAccess]  in 0.0580 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.1300 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.109 seconds
+==> dc:   * dsc_resource[DHCPDns] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[DhcpServerOptionValue]DirectResourceAccess]
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Getting DHCP server option value "6" with vendor class "" and user class "".
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] DHCP server option value "6" with vendor class "" and user class "" not found.
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[DhcpServerOptionValue]DirectResourceAccess] False in 0.0000 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0000 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.059 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[DhcpServerOptionValue]DirectResourceAccess]
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Getting DHCP server option value "6" with vendor class "" and user class "".
+==> dc:     [DC]:                            [[DhcpServerOptionValue]DirectResourceAccess] Setting DHCP server option value "6" with vendor class "" and user class "".
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[DhcpServerOptionValue]DirectResourceAccess]  in 0.0090 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0250 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.065 seconds
+==> dc:   * dsc_resource[DHCPAuthorization] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[xDhcpServerAuthorization]DirectResourceAccess]
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Evaluating the server authorization for the server '' if it is in the desired state.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Resolving local hostname.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Resolving first local IPv4 IP address.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\CIMV2,'className' = Win32_NetworkAdapterConfiguration'.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Get the current state of the server authorization for the server ''.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] DHCP Server 'dc.cybersolve.lab' with IP address '10.0.2.15' is NOT authorized.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Property 'Ensure' is incorrect. Expected 'Present', actual 'Absent'.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] DHCP Server 'dc.cybersolve.lab' is NOT in the desired state.
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[xDhcpServerAuthorization]DirectResourceAccess] False in 0.3190 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.3830 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.436 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[xDhcpServerAuthorization]DirectResourceAccess]
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Changing the server authorization for the server '' to the desired state.
+==> dc:     [DC]:                            [[xDhcpServerAuthorization]DirectResourceAccess] Authorizing DHCP Server 'dc.cybersolve.lab' with IP address '10.0.2.15'.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[xDhcpServerAuthorization]DirectResourceAccess]  in 0.0810 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0920 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.133 seconds
+==> dc: Recipe: cs_lab::deploy_ad
+==> dc:   * dsc_resource[WF_AD-Certificate] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: AD-Certificate
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: AD-Certificate
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 0.1490 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.2190 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.237 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature AD-Certificate.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 12.6570 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  12.6570 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 11.828 seconds
+==> dc:   * dsc_resource[WF_ADCS-Enroll-Web-Svc] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: ADCS-Enroll-Web-Svc
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: ADCS-Enroll-Web-Svc
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 0.3580 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.3800 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.472 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature ADCS-Enroll-Web-Svc.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 62.0220 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  62.1020 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 45.103 seconds
+==> dc:   * dsc_resource[WF_ADCS-Web-Enrollment] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' started: ADCS-Web-Enrollment
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] The operation 'Get-WindowsFeature' succeeded: ADCS-Web-Enrollment
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[WindowsFeature]DirectResourceAccess] False in 2.1320 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  2.3900 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 1.676 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[WindowsFeature]DirectResourceAccess]
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Continue with installation?
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing started...
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Prerequisite processing succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Installation succeeded.
+==> dc:     [DC]:                            [[WindowsFeature]DirectResourceAccess] Successfully installed the feature ADCS-Web-Enrollment.
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[WindowsFeature]DirectResourceAccess]  in 37.6230 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  37.6460 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 26.099 seconds
+==> dc:   * dsc_resource[WF_ADCS-Cert-Authority] action run
+==> dc:   * dsc_resource[CertificationAuthority] action run
+==> dc:   * dsc_resource[ADOU_Domain Users] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Domain Users' from path 'DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Domain Users' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] OU 'Domain Users' does not exist when it should exist. (ADOU0008)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADOrganizationalUnit]DirectResourceAccess] False in 5.5250 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  5.9950 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 5.001 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Domain Users' from path 'DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Domain Users' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Creating OU 'Domain Users'. (ADOU0004)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]  in 0.3980 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.4150 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.393 seconds
+==> dc:   * dsc_resource[ADOU_Service Accounts] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Service Accounts' from path 'OU=Domain Users,DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Service Accounts' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] OU 'Service Accounts' does not exist when it should exist. (ADOU0008)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADOrganizationalUnit]DirectResourceAccess] False in 0.0000 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0340 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.071 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Service Accounts' from path 'OU=Domain Users,DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Service Accounts' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Creating OU 'Service Accounts'. (ADOU0004)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]  in 0.0430 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0430 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.088 seconds
+==> dc:   * dsc_resource[ADOU_Privileged Accounts] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Privileged Accounts' from path 'OU=Domain Users,DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] OU 'Privileged Accounts' does not exist when it should exist. (ADOU0008)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADOrganizationalUnit]DirectResourceAccess] False in 0.0000 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0050 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.064 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Privileged Accounts' from path 'OU=Domain Users,DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Privileged Accounts' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Creating OU 'Privileged Accounts'. (ADOU0004)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]  in 0.0570 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0570 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.082 seconds
+==> dc:   * dsc_resource[ADOU_Domain Groups] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Domain Groups' from path 'DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Domain Groups' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] OU 'Domain Groups' does not exist when it should exist. (ADOU0008)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADOrganizationalUnit]DirectResourceAccess] False in 0.0360 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0360 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.064 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Retrieving OU 'Domain Groups' from path 'DC=cybersolve,DC=lab'. (ADOU0001)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] The OU 'Domain Groups' is absent. (ADOU0012)
+==> dc:     [DC]:                            [[ADOrganizationalUnit]DirectResourceAccess] Creating OU 'Domain Groups'. (ADOU0004)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADOrganizationalUnit]DirectResourceAccess]  in 0.0500 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.0500 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.09 seconds
+==> dc:   * dsc_resource[ADGroups_GSG-SQL-SQL Administrators] action run
+==> dc:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Test     ]  [[ADGroup]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] Retrieving AD Group 'GSG-SQL-SQL Administrators'. (ADG0021)
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] The AD Group 'GSG-SQL-SQL Administrators' is absent. (ADG0024)
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] AD Group 'GSG-SQL-SQL Administrators' does not exist but should. (ADG0016)
+==> dc:     [DC]: LCM:  [ End    Test     ]  [[ADGroup]DirectResourceAccess] False in 0.1440 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.2470 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.273 seconds
+==> dc:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> dc:     An LCM method call arrived from computer DC with user sid S-1-5-21-2670592961-58631708-3966514177-1000.
+==> dc:     [DC]: LCM:  [ Start  Set      ]  [[ADGroup]DirectResourceAccess]
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] Retrieving AD Group 'GSG-SQL-SQL Administrators'. (ADG0021)
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] The AD Group 'GSG-SQL-SQL Administrators' is absent. (ADG0024)
+==> dc:     [DC]:                            [[ADGroup]DirectResourceAccess] Creating AD Group 'GSG-SQL-SQL Administrators'. (ADG0005)
+==> dc:     [DC]: LCM:  [ End    Set      ]  [[ADGroup]DirectResourceAccess]  in 0.0950 seconds.
+==> dc:     [DC]: LCM:  [ End    Set      ]    in  0.4360 seconds.
+==> dc:     Operation 'Invoke CimMethod' complete.
+==> dc:     Time taken for configuration job to complete is 0.596 seconds
+==> dc: [2023-08-26T14:06:03+00:00] INFO: Chef Infra Client Run complete in 167.6798184 seconds
+==> dc: Running handlers:
+==> dc: [2023-08-26T14:06:03+00:00] INFO: Running report handlers
+==> dc: Running handlers complete
+==> dc: [2023-08-26T14:06:03+00:00] INFO: Report handlers complete
+==> dc: Infra Phase complete, 13/15 resources updated in 02 minutes 55 seconds
+PS D:\users\work\Documents\repos\cs_lab> vagrant up admin
+Bringing machine 'admin' up with 'virtualbox' provider...
+==> admin: Preparing master VM for linked clones...
+    admin: This is a one time operation. Once the master VM is prepared,
+    admin: it will be used as a base for linked clones, making the creation
+    admin: of new VMs take milliseconds on a modern system.
+==> admin: Importing base box 'gusztavvargadr/windows-server'...
+==> admin: Cloning VM...
+==> admin: Matching MAC address for NAT networking...
+==> admin: Checking if box 'gusztavvargadr/windows-server' version '2102.0.2308' is up to date...
+C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/repository.rb:65: warning: Exception in finalizer #<Tempfile::Remover:0x079dbc44 @pid=8584, @tmpfile=#<File:C:/Users/Work/AppData/Local/Temp/vagrant-load-metadata20230826-8584-upjywn (closed)>>
+C:/HashiCorp/Vagrant/embedded/mingw32/lib/ruby/3.1.0/tempfile.rb:265:in `unlink': Permission denied @ apply2files - C:/Users/Work/AppData/Local/Temp/vagrant-load-metadata20230826-8584-upjywn (Errno::EACCES)
+        from C:/HashiCorp/Vagrant/embedded/mingw32/lib/ruby/3.1.0/tempfile.rb:265:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/repository.rb:65:in `block (2 levels) in reassign_any_children'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/repository.rb:63:in `each'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/repository.rb:63:in `block in reassign_any_children'
+        from C:/HashiCorp/Vagrant/embedded/mingw32/lib/ruby/3.1.0/monitor.rb:202:in `synchronize'
+        from C:/HashiCorp/Vagrant/embedded/mingw32/lib/ruby/3.1.0/monitor.rb:202:in `mon_synchronize'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/repository.rb:62:in `reassign_any_children'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/logger.rb:68:in `deal_with_inheritance'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/log4r-1.1.10/lib/log4r/logger.rb:36:in `initialize'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine_index.rb:417:in `new'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine_index.rb:417:in `initialize'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine_index.rb:233:in `new'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine_index.rb:233:in `set'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:558:in `block in state'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:554:in `synchronize'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:554:in `state'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/is_paused.rb:11:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/call.rb:43:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/call.rb:53:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/call.rb:53:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/box_check_outdated.rb:95:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/config_validate.rb:25:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/check_virtualbox.rb:20:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/env_set.rb:19:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/match_mac_address.rb:22:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/discard_state.rb:15:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/import.rb:46:in `clone'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/import.rb:11:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/prepare_clone_snapshot.rb:32:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/prepare_clone.rb:15:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/import_master.rb:36:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/customize.rb:40:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/check_accessible.rb:18:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/call.rb:53:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/config_validate.rb:25:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/handle_box.rb:56:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:127:in `block in finalize_action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builtin/call.rb:53:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/plugins/providers/virtualbox/action/check_virtualbox.rb:20:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/warden.rb:48:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/builder.rb:180:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `block in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/util/busy.rb:19:in `busy'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/action/runner.rb:101:in `run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:248:in `action_raw'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:217:in `block in action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/environment.rb:646:in `lock'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:203:in `call'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/machine.rb:203:in `action'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/vagrant-2.3.8.dev/lib/vagrant/batch_action.rb:86:in `block (2 levels) in run'
+        from C:/HashiCorp/Vagrant/embedded/gems/gems/logging-2.3.1/lib/logging/diagnostic_context.rb:474:in `block in create_with_logging_context'
+==> admin: Setting the name of the VM: cs_lab_admin_1693058836635_14712
+==> admin: Using hostname "admin" as node name for Chef...
+==> admin: Using hostname "admin" as node name for Chef...
+==> admin: Fixed port collision for 3389 => 53389. Now on port 2200.
+==> admin: Fixed port collision for 5985 => 55985. Now on port 2201.
+==> admin: Fixed port collision for 5986 => 55986. Now on port 2202.
+==> admin: Fixed port collision for 22 => 2222. Now on port 2203.
+==> admin: Clearing any previously set network interfaces...
+==> admin: Preparing network interfaces based on configuration...
+    admin: Adapter 1: nat
+    admin: Adapter 2: intnet
+==> admin: Forwarding ports...
+    admin: 3389 (guest) => 2200 (host) (adapter 1)
+    admin: 5985 (guest) => 2201 (host) (adapter 1)
+    admin: 5986 (guest) => 2202 (host) (adapter 1)
+    admin: 22 (guest) => 2203 (host) (adapter 1)
+==> admin: Running 'pre-boot' VM customizations...
+==> admin: Booting VM...
+==> admin: Waiting for machine to boot. This may take a few minutes...
+    admin: WinRM address: 127.0.0.1:2201
+    admin: WinRM username: vagrant
+    admin: WinRM execution_time_limit: PT2H
+    admin: WinRM transport: plaintext
+==> admin: Machine booted and ready!
+==> admin: Setting hostname...
+==> admin: Waiting for machine to reboot...
+==> admin: Configuring and enabling network interfaces...
+==> admin: Mounting shared folders...
+    admin: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    admin: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> admin: Running provisioner: chef_solo...
+==> admin: Detected Chef (latest) is already installed
+==> admin: Generating chef JSON and uploading...
+==> admin: Running chef-solo...
+==> admin: [2023-08-26T14:11:03+00:00] INFO: Persisting a license for Chef Infra Client at path C:/Users/vagrant/.chef/accepted_licenses/chef_infra_client
+==> admin: [2023-08-26T14:11:03+00:00] INFO: Persisting a license for Chef InSpec at path C:/Users/vagrant/.chef/accepted_licenses/inspec
+==> admin: [2023-08-26T14:11:04+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> admin: Chef Infra Client, version 18.2.7
+==> admin: Patents: https://www.chef.io/patents
+==> admin: Infra Phase starting
+==> admin: [2023-08-26T14:11:04+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> admin: [2023-08-26T14:11:04+00:00] INFO: Platform: x64-mingw-ucrt
+==> admin: [2023-08-26T14:11:04+00:00] INFO: Chef-client pid: 1156
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Setting the run_list to ["recipe[cs_lab::join_domain]"] from CLI options
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Run List is [recipe[cs_lab::join_domain]]
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Run List expands to [cs_lab::join_domain]
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Starting Chef Infra Client Run for admin
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Running start handlers
+==> admin: [2023-08-26T14:11:15+00:00] INFO: Start handlers complete.
+==> admin: Resolving cookbooks for run list: ["cs_lab::join_domain"]
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> admin: Synchronizing cookbooks:
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/attributes/default.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/metadata.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_ad.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/LICENSE in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dhcp.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dns.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dc.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_sql.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/chefignore in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/README.md in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_ssms.rb in the cache.
+==> admin: [2023-08-26T14:11:16+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/join_domain.rb in the cache.
+==> admin:   - cs_lab (0.1.0)
+==> admin: Installing cookbook gem dependencies:
+==> admin: Compiling cookbooks...
+==> admin: Loading Chef InSpec profile files:
+==> admin: Loading Chef InSpec input files:
+==> admin: Loading Chef InSpec waiver files:
+==> admin: Converging 7 resources
+==> admin: Recipe: cs_lab::join_domain
+==> admin:   * powershell_package[ComputerManagementDsc] action install
+==> admin:     - install version 9.0.0 of package ComputerManagementDsc
+==> admin:   * powershell_package[NetworkingDsc] action install
+==> admin:     - install version 9.0.0 of package NetworkingDsc
+==> admin:   * dsc_resource[DNS: 172.31.10.10] action run
+==> admin:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Test     ]  [[DnsServerAddress]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: Checking the DNS server addresses.
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Getting staticly assigned DNS server IPv4 address for interface alias 'Ethernet 2'.
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Statically assigned DNS server IPv4 address for interface alias 'Ethernet 2' is not set.
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: DNS server addresses are not correct. Expected "172.31.10.10", actual "".
+==> admin:     [ADMIN]: LCM:  [ End    Test     ]  [[DnsServerAddress]DirectResourceAccess] False in 1.9790 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  4.9450 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 5.449 seconds
+==> admin:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Set      ]  [[DnsServerAddress]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: Applying the IPv4 DNS server addresses "172.31.10.10" to "Ethernet 2".
+==> admin:     [ADMIN]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: DNS server addresses were set to the desired state.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]  [[DnsServerAddress]DirectResourceAccess]  in 1.5090 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  1.5810 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 1.636 seconds
+==> admin:   * dsc_resource[Join domain: cybersolve.lab] action run
+==> admin:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Test     ]  [[Computer]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Testing computer state for 'admin'.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Checking if the machine is a member of domain 'cybersolve.lab'.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> admin:     [ADMIN]: LCM:  [ End    Test     ]  [[Computer]DirectResourceAccess] False in 0.1070 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.2880 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.353 seconds
+==> admin:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Set      ]  [[Computer]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Setting computer state for 'admin'.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> admin:     [ADMIN]:                            [[Computer]DirectResourceAccess] Added computer to domain 'cybersolve.lab'.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]  [[Computer]DirectResourceAccess]  in 4.1350 seconds.
+==> admin:     [ADMIN]:                            [] A reboot is required to progress further. Please reboot the system.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  4.1430 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 4.266 seconds
+==> admin:   * dsc_resource[FW: Public] action run
+==> admin:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Public Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Public Profile "Enabled" is "True" but should be "False". Change required.
+==> admin:     [ADMIN]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 1.1020 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  1.1660 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 1.26 seconds
+==> admin:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile parameter Enabled to "Enabled".
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile updated.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.1710 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.1750 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.233 seconds
+==> admin:   * dsc_resource[FW: Private] action run
+==> admin:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Private Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Private Profile "Enabled" is "True" but should be "False". Change required.
+==> admin:     [ADMIN]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0270 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.0400 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.081 seconds
+==> admin:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile parameter Enabled to "Enabled".
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile updated.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0420 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.0620 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.105 seconds
+==> admin:   * dsc_resource[FW: Domain] action run
+==> admin:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Domain Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Domain Profile "Enabled" is "True" but should be "False". Change required.
+==> admin:     [ADMIN]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0300 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.0420 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.083 seconds
+==> admin:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> admin:     An LCM method call arrived from computer ADMIN with user sid S-1-5-21-71878050-442374300-976967361-1000.
+==> admin:     [ADMIN]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile.
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile parameter Enabled to "Enabled".
+==> admin:     [ADMIN]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile updated.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0700 seconds.
+==> admin:     [ADMIN]: LCM:  [ End    Set      ]    in  0.1220 seconds.
+==> admin:     Operation 'Invoke CimMethod' complete.
+==> admin:     Time taken for configuration job to complete is 0.209 seconds
+==> admin: [2023-08-26T14:11:48+00:00] INFO: Chef Infra Client Run complete in 33.4300264 seconds
+==> admin: Running handlers:
+==> admin: [2023-08-26T14:11:48+00:00] INFO: Running report handlers
+==> admin: Running handlers complete
+==> admin: [2023-08-26T14:11:48+00:00] INFO: Report handlers complete
+==> admin: Infra Phase complete, 7/7 resources updated in 44 seconds
+==> admin: Running provisioner: reload...
+==> admin: Attempting graceful shutdown of VM...
+==> admin: Checking if box 'gusztavvargadr/windows-server' version '2102.0.2308' is up to date...
+==> admin: Clearing any previously set network interfaces...
+==> admin: Preparing network interfaces based on configuration...
+    admin: Adapter 1: nat
+    admin: Adapter 2: intnet
+==> admin: Forwarding ports...
+    admin: 3389 (guest) => 2200 (host) (adapter 1)
+    admin: 5985 (guest) => 2201 (host) (adapter 1)
+    admin: 5986 (guest) => 2202 (host) (adapter 1)
+    admin: 22 (guest) => 2203 (host) (adapter 1)
+==> admin: Running 'pre-boot' VM customizations...
+==> admin: Booting VM...
+==> admin: Waiting for machine to boot. This may take a few minutes...
+    admin: WinRM address: 127.0.0.1:2201
+    admin: WinRM username: vagrant
+    admin: WinRM execution_time_limit: PT2H
+    admin: WinRM transport: plaintext
+==> admin: Machine booted and ready!
+==> admin: Setting hostname...
+==> admin: Configuring and enabling network interfaces...
+==> admin: Mounting shared folders...
+    admin: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    admin: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> admin: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> admin: flag to force provisioning. Provisioners marked to run always will still run.
+==> admin: Running provisioner: chef_solo...
+==> admin: Detected Chef (latest) is already installed
+==> admin: Generating chef JSON and uploading...
+==> admin: Running chef-solo...
+==> admin: [2023-08-26T14:13:59+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> admin: Chef Infra Client, version 18.2.7
+==> admin: Patents: https://www.chef.io/patents
+==> admin: Infra Phase starting
+==> admin: [2023-08-26T14:13:59+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> admin: [2023-08-26T14:13:59+00:00] INFO: Platform: x64-mingw-ucrt
+==> admin: [2023-08-26T14:13:59+00:00] INFO: Chef-client pid: 2576
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Setting the run_list to ["recipe[cs_lab::install_ssms]"] from CLI options
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Run List is [recipe[cs_lab::install_ssms]]
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Run List expands to [cs_lab::install_ssms]
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Starting Chef Infra Client Run for admin
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Running start handlers
+==> admin: [2023-08-26T14:14:09+00:00] INFO: Start handlers complete.
+==> admin: Resolving cookbooks for run list: ["cs_lab::install_ssms"]
+==> admin: [2023-08-26T14:14:10+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> admin: Synchronizing cookbooks:
+==> admin:   - cs_lab (0.1.0)
+==> admin: Installing cookbook gem dependencies:
+==> admin: Compiling cookbooks...
+==> admin: Loading Chef InSpec profile files:
+==> admin: Loading Chef InSpec input files:
+==> admin: Loading Chef InSpec waiver files:
+==> admin: Converging 2 resources
+==> admin: Recipe: cs_lab::install_ssms
+==> admin:   * directory[Directory: C:\Temp] action create[2023-08-26T14:14:10+00:00] INFO: directory[Directory: C:\Temp] created directory C:\Temp
+==> admin:     - create new directory C:\Temp
+==> admin:   * windows_package[SQL Server Management Studio] action install
+==> admin:     * remote_file[C:\chef\cache\package\ssmsfullsetup] action create
+==> admin:       - create new file C:\Temp\SSMS-Setup-ENU.exe
+==> admin:       - update content in file C:\Temp\SSMS-Setup-ENU.exe from none to fdc2ce
+==> admin:       (file sizes exceed 10000000 bytes, diff output suppressed)
+==> admin: [2023-08-26T14:16:47+00:00] INFO: windows_package[SQL Server Management Studio] installed SQL Server Management Studio at latest
+==> admin:     - install version latest of package SQL Server Management Studio
+==> admin: [2023-08-26T14:16:47+00:00] INFO: Chef Infra Client Run complete in 158.434056 seconds
+==> admin: Running handlers:
+==> admin: [2023-08-26T14:16:47+00:00] INFO: Running report handlers
+==> admin: Running handlers complete
+==> admin: [2023-08-26T14:16:47+00:00] INFO: Report handlers complete
+==> admin: Infra Phase complete, 3/3 resources updated in 02 minutes 48 seconds
+PS D:\users\work\Documents\repos\cs_lab> vagrant up util
+Bringing machine 'util' up with 'virtualbox' provider...
+==> util: Cloning VM...
+==> util: Matching MAC address for NAT networking...
+==> util: Checking if box 'gusztavvargadr/windows-server' version '2102.0.2308' is up to date...
+==> util: Setting the name of the VM: cs_lab_util_1693059422993_36596
+==> util: Using hostname "util" as node name for Chef...
+==> util: Fixed port collision for 3389 => 53389. Now on port 2204.
+==> util: Fixed port collision for 5985 => 55985. Now on port 2205.
+==> util: Fixed port collision for 5986 => 55986. Now on port 2206.
+==> util: Fixed port collision for 22 => 2222. Now on port 2207.
+==> util: Clearing any previously set network interfaces...
+==> util: Preparing network interfaces based on configuration...
+    util: Adapter 1: nat
+    util: Adapter 2: intnet
+==> util: Forwarding ports...
+    util: 3389 (guest) => 2204 (host) (adapter 1)
+    util: 5985 (guest) => 2205 (host) (adapter 1)
+    util: 5986 (guest) => 2206 (host) (adapter 1)
+    util: 22 (guest) => 2207 (host) (adapter 1)
+==> util: Running 'pre-boot' VM customizations...
+==> util: Booting VM...
+==> util: Waiting for machine to boot. This may take a few minutes...
+    util: WinRM address: 127.0.0.1:2205
+    util: WinRM username: vagrant
+    util: WinRM execution_time_limit: PT2H
+    util: WinRM transport: plaintext
+==> util: Machine booted and ready!
+==> util: Setting hostname...
+==> util: Waiting for machine to reboot...
+==> util: Configuring and enabling network interfaces...
+==> util: Mounting shared folders...
+    util: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    util: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> util: Running provisioner: chef_solo...
+==> util: Detected Chef (latest) is already installed
+==> util: Generating chef JSON and uploading...
+==> util: Running chef-solo...
+==> util: [2023-08-26T14:20:38+00:00] INFO: Persisting a license for Chef Infra Client at path C:/Users/vagrant/.chef/accepted_licenses/chef_infra_client
+==> util: [2023-08-26T14:20:38+00:00] INFO: Persisting a license for Chef InSpec at path C:/Users/vagrant/.chef/accepted_licenses/inspec
+==> util: [2023-08-26T14:20:39+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> util: Chef Infra Client, version 18.2.7
+==> util: Patents: https://www.chef.io/patents
+==> util: Infra Phase starting
+==> util: [2023-08-26T14:20:39+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> util: [2023-08-26T14:20:39+00:00] INFO: Platform: x64-mingw-ucrt
+==> util: [2023-08-26T14:20:39+00:00] INFO: Chef-client pid: 4040
+==> util: [2023-08-26T14:20:52+00:00] INFO: Setting the run_list to ["recipe[cs_lab::join_domain]"] from CLI options
+==> util: [2023-08-26T14:20:52+00:00] INFO: Run List is [recipe[cs_lab::join_domain]]
+==> util: [2023-08-26T14:20:52+00:00] INFO: Run List expands to [cs_lab::join_domain]
+==> util: [2023-08-26T14:20:52+00:00] INFO: Starting Chef Infra Client Run for util
+==> util: [2023-08-26T14:20:52+00:00] INFO: Running start handlers
+==> util: [2023-08-26T14:20:52+00:00] INFO: Start handlers complete.
+==> util: Resolving cookbooks for run list: ["cs_lab::join_domain"]
+==> util: [2023-08-26T14:20:53+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> util: Synchronizing cookbooks:
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/chefignore in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/metadata.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_sql.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dns.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/LICENSE in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/README.md in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dhcp.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/attributes/default.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dc.rb in the cache.
+==> util: [2023-08-26T14:20:53+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_ad.rb in the cache.
+==> util: [2023-08-26T14:20:54+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_ssms.rb in the cache.
+==> util: [2023-08-26T14:20:54+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/join_domain.rb in the cache.
+==> util:   - cs_lab (0.1.0)
+==> util: Installing cookbook gem dependencies:
+==> util: Compiling cookbooks...
+==> util: Loading Chef InSpec profile files:
+==> util: Loading Chef InSpec input files:
+==> util: Loading Chef InSpec waiver files:
+==> util: Converging 7 resources
+==> util: Recipe: cs_lab::join_domain
+==> util:   * powershell_package[ComputerManagementDsc] action install
+==> util:     - install version 9.0.0 of package ComputerManagementDsc
+==> util:   * powershell_package[NetworkingDsc] action install
+==> util:     - install version 9.0.0 of package NetworkingDsc
+==> util:   * dsc_resource[DNS: 172.31.10.10] action run
+==> util:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Test     ]  [[DnsServerAddress]DirectResourceAccess]
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: Checking the DNS server addresses.
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Getting staticly assigned DNS server IPv4 address for interface alias 'Ethernet 2'.
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Statically assigned DNS server IPv4 address for interface alias 'Ethernet 2' is not set.
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: DNS server addresses are not correct. Expected "172.31.10.10", actual "".
+==> util:     [UTIL]: LCM:  [ End    Test     ]  [[DnsServerAddress]DirectResourceAccess] False in 2.3570 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  5.2370 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 5.812 seconds
+==> util:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Set      ]  [[DnsServerAddress]DirectResourceAccess]
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: Applying the IPv4 DNS server addresses "172.31.10.10" to "Ethernet 2".
+==> util:     [UTIL]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: DNS server addresses were set to the desired state.
+==> util:     [UTIL]: LCM:  [ End    Set      ]  [[DnsServerAddress]DirectResourceAccess]  in 0.6100 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.6440 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.693 seconds
+==> util:   * dsc_resource[Join domain: cybersolve.lab] action run
+==> util:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Test     ]  [[Computer]DirectResourceAccess]
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Testing computer state for 'util'.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Checking if the machine is a member of domain 'cybersolve.lab'.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> util:     [UTIL]: LCM:  [ End    Test     ]  [[Computer]DirectResourceAccess] False in 0.1070 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.3210 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.401 seconds
+==> util:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Set      ]  [[Computer]DirectResourceAccess]
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Setting computer state for 'util'.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> util:     [UTIL]:                            [[Computer]DirectResourceAccess] Added computer to domain 'cybersolve.lab'.
+==> util:     [UTIL]: LCM:  [ End    Set      ]  [[Computer]DirectResourceAccess]  in 4.4390 seconds.
+==> util:     [UTIL]:                            [] A reboot is required to progress further. Please reboot the system.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  4.4510 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 4.487 seconds
+==> util:   * dsc_resource[FW: Public] action run
+==> util:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Public Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Public Profile "Enabled" is "True" but should be "False". Change required.
+==> util:     [UTIL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 1.1570 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  1.2580 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 1.346 seconds
+==> util:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile parameter Enabled to "Enabled".
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile updated.
+==> util:     [UTIL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.1020 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.1130 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.163 seconds
+==> util:   * dsc_resource[FW: Private] action run
+==> util:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Private Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Private Profile "Enabled" is "True" but should be "False". Change required.
+==> util:     [UTIL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0290 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.0660 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile parameter Enabled to "Enabled".
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile updated.
+==> util:     [UTIL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0630 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.0630 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.122 seconds
+==> util:   * dsc_resource[FW: Domain] action run
+==> util:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Domain Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Domain Profile "Enabled" is "True" but should be "False". Change required.
+==> util:     [UTIL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0060 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.1010 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.174 seconds
+==> util:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> util:     An LCM method call arrived from computer UTIL with user sid S-1-5-21-178611685-1896477875-260322786-1000.
+==> util:     [UTIL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile.
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile parameter Enabled to "Enabled".
+==> util:     [UTIL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile updated.
+==> util:     [UTIL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0850 seconds.
+==> util:     [UTIL]: LCM:  [ End    Set      ]    in  0.1060 seconds.
+==> util:     Operation 'Invoke CimMethod' complete.
+==> util:     Time taken for configuration job to complete is 0.167 seconds
+==> util: [2023-08-26T14:21:27+00:00] INFO: Chef Infra Client Run complete in 35.5916419 seconds
+==> util: Running handlers:
+==> util: [2023-08-26T14:21:27+00:00] INFO: Running report handlers
+==> util: Running handlers complete
+==> util: [2023-08-26T14:21:27+00:00] INFO: Report handlers complete
+==> util: Infra Phase complete, 7/7 resources updated in 48 seconds
+==> util: Running provisioner: reload...
+==> util: Attempting graceful shutdown of VM...
+==> util: Checking if box 'gusztavvargadr/windows-server' version '2102.0.2308' is up to date...
+==> util: Clearing any previously set forwarded ports...
+==> util: Clearing any previously set network interfaces...
+==> util: Preparing network interfaces based on configuration...
+    util: Adapter 1: nat
+    util: Adapter 2: intnet
+==> util: Forwarding ports...
+    util: 3389 (guest) => 2204 (host) (adapter 1)
+    util: 5985 (guest) => 2205 (host) (adapter 1)
+    util: 5986 (guest) => 2206 (host) (adapter 1)
+    util: 22 (guest) => 2207 (host) (adapter 1)
+==> util: Running 'pre-boot' VM customizations...
+==> util: Booting VM...
+==> util: Waiting for machine to boot. This may take a few minutes...
+    util: WinRM address: 127.0.0.1:2205
+    util: WinRM username: vagrant
+    util: WinRM execution_time_limit: PT2H
+    util: WinRM transport: plaintext
+==> util: Machine booted and ready!
+==> util: Setting hostname...
+==> util: Configuring and enabling network interfaces...
+==> util: Mounting shared folders...
+    util: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    util: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> util: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> util: flag to force provisioning. Provisioners marked to run always will still run.
+PS D:\users\work\Documents\repos\cs_lab> vagrant up sql
+Bringing machine 'sql' up with 'virtualbox' provider...
+==> sql: Cloning VM...
+==> sql: Matching MAC address for NAT networking...
+==> sql: Checking if box 'gusztavvargadr/windows-server-core' version '2102.0.2308' is up to date...
+==> sql: Setting the name of the VM: cs_lab_sql_1693059785321_3652
+==> sql: Using hostname "sql" as node name for Chef...
+==> sql: Using hostname "sql" as node name for Chef...
+==> sql: Fixed port collision for 3389 => 53389. Now on port 2208.
+==> sql: Fixed port collision for 5985 => 55985. Now on port 2209.
+==> sql: Fixed port collision for 5986 => 55986. Now on port 2210.
+==> sql: Fixed port collision for 22 => 2222. Now on port 2211.
+==> sql: Clearing any previously set network interfaces...
+==> sql: Preparing network interfaces based on configuration...
+    sql: Adapter 1: nat
+    sql: Adapter 2: intnet
+==> sql: Forwarding ports...
+    sql: 3389 (guest) => 2208 (host) (adapter 1)
+    sql: 5985 (guest) => 2209 (host) (adapter 1)
+    sql: 5986 (guest) => 2210 (host) (adapter 1)
+    sql: 22 (guest) => 2211 (host) (adapter 1)
+==> sql: Running 'pre-boot' VM customizations...
+==> sql: Booting VM...
+==> sql: Waiting for machine to boot. This may take a few minutes...
+    sql: WinRM address: 127.0.0.1:2209
+    sql: WinRM username: vagrant
+    sql: WinRM execution_time_limit: PT2H
+    sql: WinRM transport: plaintext
+==> sql: Machine booted and ready!
+==> sql: Setting hostname...
+==> sql: Waiting for machine to reboot...
+==> sql: Configuring and enabling network interfaces...
+==> sql: Mounting shared folders...
+    sql: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    sql: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> sql: Running provisioner: chef_solo...
+==> sql: Detected Chef (latest) is already installed
+==> sql: Generating chef JSON and uploading...
+==> sql: Running chef-solo...
+==> sql: [2023-08-26T14:26:03+00:00] INFO: Persisting a license for Chef Infra Client at path C:/Users/vagrant/.chef/accepted_licenses/chef_infra_client
+==> sql: [2023-08-26T14:26:03+00:00] INFO: Persisting a license for Chef InSpec at path C:/Users/vagrant/.chef/accepted_licenses/inspec
+==> sql: [2023-08-26T14:26:04+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> sql: Chef Infra Client, version 18.2.7
+==> sql: Patents: https://www.chef.io/patents
+==> sql: Infra Phase starting
+==> sql: [2023-08-26T14:26:04+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> sql: [2023-08-26T14:26:04+00:00] INFO: Platform: x64-mingw-ucrt
+==> sql: [2023-08-26T14:26:04+00:00] INFO: Chef-client pid: 3124
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Setting the run_list to ["recipe[cs_lab::join_domain]"] from CLI options
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Run List is [recipe[cs_lab::join_domain]]
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Run List expands to [cs_lab::join_domain]
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Starting Chef Infra Client Run for sql
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Running start handlers
+==> sql: [2023-08-26T14:26:18+00:00] INFO: Start handlers complete.
+==> sql: Resolving cookbooks for run list: ["cs_lab::join_domain"]
+==> sql: [2023-08-26T14:26:19+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> sql: Synchronizing cookbooks:
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dc.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dns.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/attributes/default.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_dhcp.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/LICENSE in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/deploy_ad.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/chefignore in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_sql.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/metadata.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/README.md in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/join_domain.rb in the cache.
+==> sql: [2023-08-26T14:26:20+00:00] INFO: Storing updated cookbooks/cs_lab/recipes/install_ssms.rb in the cache.
+==> sql:   - cs_lab (0.1.0)
+==> sql: Installing cookbook gem dependencies:
+==> sql: Compiling cookbooks...
+==> sql: Loading Chef InSpec profile files:
+==> sql: Loading Chef InSpec input files:
+==> sql: Loading Chef InSpec waiver files:
+==> sql: Converging 7 resources
+==> sql: Recipe: cs_lab::join_domain
+==> sql:   * powershell_package[ComputerManagementDsc] action install
+==> sql:     - install version 9.0.0 of package ComputerManagementDsc
+==> sql:   * powershell_package[NetworkingDsc] action install
+==> sql:     - install version 9.0.0 of package NetworkingDsc
+==> sql:   * dsc_resource[DNS: 172.31.10.10] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[DnsServerAddress]DirectResourceAccess]
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: Checking the DNS server addresses.
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Getting staticly assigned DNS server IPv4 address for interface alias 'Ethernet 2'.
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Get-DnsClientServerStaticAddress: Statically assigned DNS server IPv4 address for interface alias 'Ethernet 2' is not set.
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Test-TargetResource: DNS server addresses are not correct. Expected "172.31.10.10", actual "".
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[DnsServerAddress]DirectResourceAccess] False in 1.8610 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  4.9210 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 5.383 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[DnsServerAddress]DirectResourceAccess]
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: Applying the IPv4 DNS server addresses "172.31.10.10" to "Ethernet 2".
+==> sql:     [SQL]:                            [[DnsServerAddress]DirectResourceAccess] Set-TargetResource: DNS server addresses were set to the desired state.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[DnsServerAddress]DirectResourceAccess]  in 0.5670 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.5750 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.621 seconds
+==> sql:   * dsc_resource[Join domain: cybersolve.lab] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[Computer]DirectResourceAccess]
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Testing computer state for 'sql'.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Checking if the machine is a member of domain 'cybersolve.lab'.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[Computer]DirectResourceAccess] False in 0.1120 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.2970 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.366 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[Computer]DirectResourceAccess]
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Setting computer state for 'sql'.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_ComputerSystem'.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> sql:     [SQL]:                            [[Computer]DirectResourceAccess] Added computer to domain 'cybersolve.lab'.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[Computer]DirectResourceAccess]  in 4.1880 seconds.
+==> sql:     [SQL]:                            [] A reboot is required to progress further. Please reboot the system.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  4.2060 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 4.243 seconds
+==> sql:   * dsc_resource[FW: Public] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Public Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Public Profile "Enabled" is "True" but should be "False". Change required.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.9270 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.9860 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 1.111 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile parameter Enabled to "Enabled".
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Public Profile updated.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0950 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.1030 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.161 seconds
+==> sql:   * dsc_resource[FW: Private] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Private Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Private Profile "Enabled" is "True" but should be "False". Change required.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0170 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.0330 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.085 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile parameter Enabled to "Enabled".
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Private Profile updated.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0470 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.0560 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.109 seconds
+==> sql:   * dsc_resource[FW: Domain] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Testing Firewall Domain Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Test-TargetResource: Firewall Domain Profile "Enabled" is "True" but should be "False". Change required.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[FirewallProfile]DirectResourceAccess] False in 0.0320 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.0410 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.1 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[FirewallProfile]DirectResourceAccess]
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile.
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile parameter Enabled to "Enabled".
+==> sql:     [SQL]:                            [[FirewallProfile]DirectResourceAccess] Set-TargetResource: Setting Firewall Domain Profile updated.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[FirewallProfile]DirectResourceAccess]  in 0.0940 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.1030 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.155 seconds
+==> sql: [2023-08-26T14:26:50+00:00] INFO: Chef Infra Client Run complete in 31.7815218 seconds
+==> sql: Running handlers:
+==> sql: [2023-08-26T14:26:50+00:00] INFO: Running report handlers
+==> sql: Running handlers complete
+==> sql: [2023-08-26T14:26:50+00:00] INFO: Report handlers complete
+==> sql: Infra Phase complete, 7/7 resources updated in 46 seconds
+==> sql: Running provisioner: reload...
+==> sql: Attempting graceful shutdown of VM...
+==> sql: Checking if box 'gusztavvargadr/windows-server-core' version '2102.0.2308' is up to date...
+==> sql: Clearing any previously set forwarded ports...
+==> sql: Clearing any previously set network interfaces...
+==> sql: Preparing network interfaces based on configuration...
+    sql: Adapter 1: nat
+    sql: Adapter 2: intnet
+==> sql: Forwarding ports...
+    sql: 3389 (guest) => 2208 (host) (adapter 1)
+    sql: 5985 (guest) => 2209 (host) (adapter 1)
+    sql: 5986 (guest) => 2210 (host) (adapter 1)
+    sql: 22 (guest) => 2211 (host) (adapter 1)
+==> sql: Running 'pre-boot' VM customizations...
+==> sql: Booting VM...
+==> sql: Waiting for machine to boot. This may take a few minutes...
+    sql: WinRM address: 127.0.0.1:2209
+    sql: WinRM username: vagrant
+    sql: WinRM execution_time_limit: PT2H
+    sql: WinRM transport: plaintext
+==> sql: Machine booted and ready!
+==> sql: Setting hostname...
+==> sql: Configuring and enabling network interfaces...
+==> sql: Mounting shared folders...
+    sql: /vagrant => D:/Users/Work/Documents/repos/cs_lab
+    sql: C:/vagrant-chef/123b987e971397bea926f60248e5ff51/cookbooks => D:/Users/Work/Documents/repos/cs_lab/cookbooks
+==> sql: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> sql: flag to force provisioning. Provisioners marked to run always will still run.
+==> sql: Running provisioner: chef_solo...
+==> sql: Detected Chef (latest) is already installed
+==> sql: Generating chef JSON and uploading...
+==> sql: Running chef-solo...
+==> sql: [2023-08-26T14:28:55+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at C:/vagrant-chef/123b987e971397bea926f60248e5ff51, C:/vagrant-chef (One version per cookbook)
+==> sql: Chef Infra Client, version 18.2.7
+==> sql: Patents: https://www.chef.io/patents
+==> sql: Infra Phase starting
+==> sql: [2023-08-26T14:28:55+00:00] INFO: *** Chef Infra Client 18.2.7 ***
+==> sql: [2023-08-26T14:28:55+00:00] INFO: Platform: x64-mingw-ucrt
+==> sql: [2023-08-26T14:28:55+00:00] INFO: Chef-client pid: 4044
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Setting the run_list to ["recipe[cs_lab::install_sql]"] from CLI options
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Run List is [recipe[cs_lab::install_sql]]
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Run List expands to [cs_lab::install_sql]
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Starting Chef Infra Client Run for sql
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Running start handlers
+==> sql: [2023-08-26T14:29:04+00:00] INFO: Start handlers complete.
+==> sql: Resolving cookbooks for run list: ["cs_lab::install_sql"]
+==> sql: [2023-08-26T14:29:05+00:00] INFO: Loading cookbooks [cs_lab@0.1.0]
+==> sql: Synchronizing cookbooks:
+==> sql:   - cs_lab (0.1.0)
+==> sql: Installing cookbook gem dependencies:
+==> sql: Compiling cookbooks...
+==> sql: Loading Chef InSpec profile files:
+==> sql: Loading Chef InSpec input files:
+==> sql: Loading Chef InSpec waiver files:
+==> sql: Converging 9 resources
+==> sql: Recipe: cs_lab::install_sql
+==> sql:   * powershell_package[SqlServerDsc] action install
+==> sql:     - install version 16.4.0 of package SqlServerDsc
+==> sql:   * powershell_package[StorageDsc] action install
+==> sql:     - install version 5.1.0 of package StorageDsc
+==> sql:   * powershell_script[Setup SQL Storage Disk] action run
+==> sql:     [execute] No MSFT_Disk objects found with property 'Number' equal to '1'.  Verify the value of the property and retry.[2023-08-26T14:29:25+00:00] INFO: powershell_script[Setup SQL Storage Disk] ran successfully
+==> sql:     - execute "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -InputFormat None  -File "C:/Users/vagrant/AppData/Local/Temp/chef-script20230826-4044-960jot.ps1"
+==> sql:   * directory[Directory: C:\Temp] action create[2023-08-26T14:29:25+00:00] INFO: directory[Directory: C:\Temp] created directory C:\Temp
+==> sql:     - create new directory C:\Temp
+==> sql:   * remote_file[SQLInstaller] action create
+==> sql:     - create new file C:\Temp\SQL2022-SSEI-Dev.exe[2023-08-26T14:29:26+00:00] INFO: remote_file[SQLInstaller] updated file contents C:\Temp\SQL2022-SSEI-Dev.exe
+==> sql:     - update content in file C:\Temp\SQL2022-SSEI-Dev.exe from none to 5d9d27
+==> sql:     (new content is binary, diff output suppressed)
+==> sql:   * powershell_script[Extract SQL ISO] action run
+==> sql: [2023-08-26T14:30:15+00:00] INFO: powershell_script[Extract SQL ISO] ran successfully
+==> sql:     - execute "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -InputFormat None  -File "C:/Users/vagrant/AppData/Local/Temp/chef-script20230826-4044-c0wfq.ps1"
+==> sql:   * dsc_resource[SQL: Mount ISO] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[MountImage]DirectResourceAccess]
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Test-TargetResource: Testing Mounted Drive for image file 'I'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Get-TargetResource: Getting Mounted Drive for image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Test-TargetResource: The image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso' is not mounted to drive 'I' but should be. Change required.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[MountImage]DirectResourceAccess] False in 2.7390 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  5.6560 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 5.69 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[MountImage]DirectResourceAccess]
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Set-TargetResource: Setting Mounted Drive for image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Get-TargetResource: Getting Mounted Drive for image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Set-TargetResource: The image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso' is being mounted as drive 'I'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Mount-DiskImageToLetter: The image file 'C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso' mounted as drive 'D' will be changed to 'I'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Perform operation 'Enumerate CimInstances' with following parameters, ''namespaceName' = root\cimv2,'className' = Win32_Volume'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Operation 'Enumerate CimInstances' complete.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Perform operation 'Modify CimInstance' with following parameters, ''namespaceName' = root/cimv2,'instance' = Win32_Volume: D:\ (DeviceID = "\\?\Volume{a2bafc43-441c-11ee-bb42-0800...)'.
+==> sql:     [SQL]:                            [[MountImage]DirectResourceAccess] Operation 'Modify CimInstance' complete.
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[MountImage]DirectResourceAccess]  in 0.4600 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.4820 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.5 seconds
+==> sql:   * dsc_resource[SQL: Instance: SECRETSERVER] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[SqlSetup]DirectResourceAccess]
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] No features are installed.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[SqlSetup]DirectResourceAccess] False in 0.4800 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.7160 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.865 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[SqlSetup]DirectResourceAccess]
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Loading module from path 'C:\Program Files\WindowsPowerShell\Modules\SqlServerDsc\16.4.0\Modules\DscResource.Base\1.1.0\DscResource.Base.psm1'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Starting setup using arguments: /NPENABLED="1" /ACTION="Install" /INSTANCENAME="SECRETSERVER" /SECURITYMODE="SQL" /TCPENABLED="1" /FEATURES=SQLENGINE,FULLTEXT /QUIET="True" /SAPWD="********" /SQLSYSADMINACCOUNTS="cybersolve\administrator" "cybersolve\GSG-SQL-SQL Administrators" /IACCEPTSQLSERVERLICENSETERMS="True"
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Started the process with id 344 using the path 'I:\setup.exe', and with a timeout value of 7200 seconds. (SQLCOMMON0017)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Setup exited with code '0'. Setup finished successfully.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'MSSQL$SECRETSERVER','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'SQLAgent$SECRETSERVER','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\SECRETSERVER'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting replication feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Replication feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Services Client feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\SECRETSERVER'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\SECRETSERVER'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Clustered instance not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'MSSQLFDLauncher$SECRETSERVER','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Found features already installed: SQLENGINE,FULLTEXT
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[SqlSetup]DirectResourceAccess]  in 199.7130 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  199.7460 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 188.255 seconds
+==> sql:   * dsc_resource[SQL: Instance: DIRECTAUDIT] action run
+==> sql:     - Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourcetest,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Test     ]  [[SqlSetup]DirectResourceAccess]
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] No features are installed.
+==> sql:     [SQL]: LCM:  [ End    Test     ]  [[SqlSetup]DirectResourceAccess] False in 0.0390 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  0.0830 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 0.258 seconds
+==> sql:     Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = Resourceset,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+==> sql:     An LCM method call arrived from computer SQL with user sid S-1-5-21-4137849353-625929030-4239247327-1000.
+==> sql:     [SQL]: LCM:  [ Start  Set      ]  [[SqlSetup]DirectResourceAccess]
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Starting setup using arguments: /NPENABLED="1" /ACTION="Install" /INSTANCENAME="DIRECTAUDIT" /SECURITYMODE="SQL" /TCPENABLED="1" /FEATURES=SQLENGINE,FULLTEXT /QUIET="True" /SAPWD="********" /SQLSYSADMINACCOUNTS="cybersolve\administrator" "cybersolve\GSG-SQL-SQL Administrators" /IACCEPTSQLSERVERLICENSETERMS="True"
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Started the process with id 4432 using the path 'I:\setup.exe', and with a timeout value of 7200 seconds. (SQLCOMMON0017)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Setup exited with code '0'. Setup finished successfully.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Using path 'I:\setup.exe'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Database Engine feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Database Engine feature detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'MSSQL$DIRECTAUDIT','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'SQLAgent$DIRECTAUDIT','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\DIRECTAUDIT'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting replication feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Replication feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Services Client feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\DIRECTAUDIT'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connecting as current user 'NT AUTHORITY\SYSTEM' using integrated security. (SQLCOMMON0054)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Connected to SQL instance 'SQL\DIRECTAUDIT'. (SQLCOMMON0018)
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Clustered instance not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Full-text feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Full-text feature detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Perform operation 'Query CimInstances' with following parameters, ''queryExpression' = SELECT * FROM Win32_Service WHERE Name = 'MSSQLFDLauncher$DIRECTAUDIT','queryDialect' = WQL,'namespaceName' = root\cimv2'.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Operation 'Query CimInstances' complete.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Reporting Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Reporting Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Analysis Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Analysis Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Integration Services feature.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Integration Services feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Data Quality Client feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Data Quality Client feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Documentation Components feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Connectivity Backwards Compatibility Tools feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Documentation Components feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Client Tools SDK feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Detecting Master Data Services (MDS) feature (HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\160\ConfigurationState).
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Master Data Services (MDS) feature not detected.
+==> sql:     [SQL]:                            [[SqlSetup]DirectResourceAccess] Found features already installed: SQLENGINE,FULLTEXT
+==> sql:     [SQL]: LCM:  [ End    Set      ]  [[SqlSetup]DirectResourceAccess]  in 97.7260 seconds.
+==> sql:     [SQL]: LCM:  [ End    Set      ]    in  97.7410 seconds.
+==> sql:     Operation 'Invoke CimMethod' complete.
+==> sql:     Time taken for configuration job to complete is 102.522 seconds
+==> sql: [2023-08-26T14:35:24+00:00] INFO: Chef Infra Client Run complete in 380.207963 seconds
+==> sql: Running handlers:
+==> sql: [2023-08-26T14:35:24+00:00] INFO: Running report handlers
+==> sql: Running handlers complete
+==> sql: [2023-08-26T14:35:24+00:00] INFO: Report handlers complete
+==> sql: Infra Phase complete, 9/9 resources updated in 06 minutes 29 seconds
