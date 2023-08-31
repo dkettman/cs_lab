@@ -15,7 +15,7 @@ dsc_resource 'DNS: 172.31.10.10' do
   property :address, ['172.31.10.10']
   property :interfacealias, 'Ethernet 2'
   property :addressfamily, 'IPv4'
-  property :validate, true
+  property :validate, false
 end
 
 dsc_resource "Join domain: #{node['SiteData']['ADDomain']['DomainFQDN']}" do
