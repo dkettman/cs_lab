@@ -10,12 +10,14 @@ node['ADJoin_PSPackages'].each do |package|
   end
 end
 
-dsc_resource 'DNS: 172.31.10.10' do
-  resource :dnsserveraddress
-  property :address, ['172.31.10.10']
-  property :interfacealias, 'Ethernet 2'
-  property :addressfamily, 'IPv4'
-  property :validate, true
+%w(Ethernet Ethernet\ 2).each do |adapter|
+  dsc_resource 'DNS: 172.31.10.10' do
+    resource :dnsserveraddress
+    property :address, ['172.31.10.10','10.0.2.3']
+    property :interfacealias, adapter
+    property :addressfamily, 'IPv4'
+    property :validate, true
+  end
 end
 
 dsc_resource "Join domain: #{node['SiteData']['ADDomain']['DomainFQDN']}" do
