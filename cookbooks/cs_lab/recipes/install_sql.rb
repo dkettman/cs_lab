@@ -10,16 +10,6 @@ node['SQL_PSPackages'].each do |package|
   end
 end
 
-powershell_script 'Setup SQL Storage Disk' do
-  code <<-EOH
-$disk = Get-Disk -Number 1
-if ($disk.PartitionStyle -ne "GPT") {
-   $disk | Initialize-Disk -PartitionStyle GPT -PassThru | New-Volume -FileSystem NTFS -DriveLetter S -FriendlyName 'SQL'
-}
-EOH
-  not_if '$disk = Get-Disk -Number 1 ; ($disk.PartitionStyle -eq "GPT")'
-end
-
 directory 'Directory: C:\Temp' do
   path 'C:\Temp'
   action :create
@@ -35,6 +25,7 @@ end
 powershell_script 'Extract SQL ISO' do
   code 'C:\Temp\SQL2022-SSEI-Dev.exe /Action=Download /MediaPath=C:\Temp\SQL /MT=ISO /q /hp'
   only_if 'Test-Path "C:\Temp\SQL2022-SSEI-Dev.exe"'
+  not_if 'Test-Path "C:\Temp\SQL\SQLServer2022-x64-ENU-Dev.iso"'
 end
 
 dsc_resource 'SQL: Mount ISO' do
@@ -43,13 +34,25 @@ dsc_resource 'SQL: Mount ISO' do
   property :driveletter, 'I'
 end
 
+directory 'SQL Data Directory' do
+  path 'C:/sql-data'
+  action :create
+end
+
+node['SiteData']['SQL']['Instances'].each do |sql|
+  directory "SQL Data Directory: C:\\Vagrant\\sql-data\\#{sql}" do
+    path "C:/sql-data/#{sql}"
+    action :create
+  end
+end
+
 node['SiteData']['SQL']['Instances'].each do |sql|
   dsc_resource "SQL: Instance: #{sql}" do
     resource :sqlsetup
     property :sourcepath, 'I:'
     property :features, 'SQLENGINE,FULLTEXT'
     property :instancename, sql
-    # property :sqlsysadminaccounts, ['CYBERSOLVE\Administrator','CYBERSOLVE\GSG-SQL-SQL Administrators']
+    property :installsqldatadir, "C:\\sql-data\\#{sql}"
     property :sqlsysadminaccounts, node['SiteData']['SQL']['SQLAdministrators']
     property :securitymode, 'SQL'
     property :sapwd, ps_credential(node['SiteData']['DefaultPassword'])
