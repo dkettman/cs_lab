@@ -79,4 +79,32 @@ Vagrant.configure("2") do |config|
     # util.vm.provision "join_domain", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
     util.vm.provision :reload
   end
+  
+  config.vm.define "web01" do |web01|
+    web01.vm.box = "gusztavvargadr/windows-server"
+    web01.vm.hostname = "web01"
+    web01.vm.synced_folder "C:\\backup\\#{web01.vm.hostname}", 'C:\Backup', create: true
+    web01.vm.network "private_network", ip: "172.31.10.50", virtualbox__intnet: "CSLab"
+    web01.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 2
+    end
+    web01.vm.provision "join_domain", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
+    web01.vm.provision :reload
+  end
+  
+  
+#   config.vm.define "<TEMPLATE>" do |<TEMPLATE>|
+#     <TEMPLATE>.vm.box = "gusztavvargadr/windows-server"
+#     <TEMPLATE>.vm.hostname = "<TEMPLATE>"
+#     <TEMPLATE>.vm.synced_folder "C:\\backup\\#{<TEMPLATE>.vm.hostname}", 'C:\Backup', create: true
+#     <TEMPLATE>.vm.network "private_network", virtualbox__intnet: "CSLab"
+#     <TEMPLATE>.vm.provider "virtualbox" do |v|
+#       v.memory = 2048
+#       v.cpus = 2
+#     end
+#     <TEMPLATE>.vm.provision "join_domain", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::join_domain]" end
+#     <TEMPLATE>.vm.provision :reload
+#   end
+  
 end
