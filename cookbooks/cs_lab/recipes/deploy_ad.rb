@@ -29,7 +29,7 @@ end
 
 powershell_script 'Deploy ADCS Certificate Template' do
   code <<-EOH
-  New-ADCSTemplate -JSON (gc c:\\vagrant\\webserverv2.json -Raw) -Identity "Domain Users" -DisplayName "Web Server v2" -Publish -Verbose
+  New-ADCSTemplate -DisplayName "Web Server v2" -JSON (Export-ADCSTemplate -DisplayName "Web Server") -Identity "Authenticated Users" -AutoEnroll -Publish
   EOH
   domain "cybersolve"
   user "Administrator"
