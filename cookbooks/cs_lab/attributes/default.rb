@@ -23,10 +23,10 @@ default['WF_ADCS'] = %w(
 default['DC_PSPackages'] = [
   'ActiveDirectoryDsc',
   'ActiveDirectoryCSDsc',
+  'ADCSTemplate',
   'ComputerManagementDsc',
   'DnsServerDsc',
   'NetworkingDsc',
-  # "PSDesiredStateConfiguration",
   'StorageDsc',
   'xDhcpServer',
   'xPSDesiredStateConfiguration',
@@ -42,6 +42,13 @@ default['SQL_PSPackages'] = %w(
   StorageDsc
 )
 
+default['WF_ADMIN'] = %w(
+  RSAT-AD-Tools
+  RSAT-ADCS
+  RSAT-DHCP
+  RSAT-DNS-Server
+)
+  
 default['SiteData'] = {
 
   # Common Variables
