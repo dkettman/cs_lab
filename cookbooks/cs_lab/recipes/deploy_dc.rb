@@ -43,3 +43,11 @@ dsc_resource 'SetForwarder' do
   property :issingleinstance, 'Yes'
   property :ipaddresses, node['SiteData']['DNSForwarder']
 end
+
+ruby_block 'Fix User Permissions' do
+  block do
+    Chef::ReservedNames::Win32::Security.add_account_right('vagrant', 'SeAssignPrimaryTokenPrivilege')
+  end
+end
+  
+    
