@@ -48,16 +48,6 @@ node['SiteData']['ADOU'].each do |ou|
   end
 end
 
-node['SiteData']['ADGroups'].each do |group|
-  dsc_resource "ADGroups_#{group['GroupName']}" do
-    resource :adgroup
-    property :groupname, group['GroupName']
-    property :path, group['Path']
-    property :description, group['Description']
-    property :ensure, 'Present'
-  end
-end
-
 node['SiteData']['ADUsers'].each do |user|
   dsc_resource "ADUser_#{user['UserName']}" do
     resource :ADUser
@@ -69,3 +59,16 @@ node['SiteData']['ADUsers'].each do |user|
     property :ensure, 'Present'
   end
 end
+
+node['SiteData']['ADGroups'].each do |group|
+  dsc_resource "ADGroups_#{group['GroupName']}" do
+    resource :adgroup
+    property :groupname, group['GroupName']
+    property :path, group['Path']
+    property :description, group['Description']
+    property :memberstoinclude, group['Members']
+    property :ensure, 'Present'
+  end
+end
+
+

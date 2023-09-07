@@ -104,20 +104,21 @@ default['SiteData'] = {
       'GroupName' => 'GSG-SQL-SQL Administrators',
       'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
       'Description' => 'Will provide SA access on SQL instances',
+      'Members' => ['svc_ss_app'],
     },
   ],
   'ADUsers' => [
     {
       'UserName' => 'svc_ss_app',
-      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
     },
     {
       'UserName' => 'svc_ss_discovery',
-      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
     },
     {
       'UserName' => 'svc_ss_rpc',
-      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
     },
   ],
   'SQL' => {
