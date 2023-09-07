@@ -10,3 +10,7 @@ vagrant
 *~
 *zip
 *exe
+
+# Certificate extensions
+*crt
+*rsp
