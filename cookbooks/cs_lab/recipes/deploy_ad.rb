@@ -55,3 +55,14 @@ node['SiteData']['ADGroups'].each do |group|
     property :ensure, 'Present'
   end
 end
+
+node['SiteData']['ADUsers'].each do |user|
+  dsc_resource "ADUser_#{user['UserName']}" do
+    resource :ADUser
+    property :username, user['UserName']
+    property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
+    property :password, ps_credential('cybersolve\administrator', node['SiteData']['DefaultPassword'])
+    property :displayname, user['UserName']
+    property :ensure, 'Present'
+  end
+end

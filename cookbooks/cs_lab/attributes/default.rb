@@ -106,6 +106,20 @@ default['SiteData'] = {
       'Description' => 'Will provide SA access on SQL instances',
     },
   ],
+  'ADUsers' => [
+    {
+      'UserName' => 'svc_ss_app',
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+    },
+    {
+      'UserName' => 'svc_ss_discovery',
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+    },
+    {
+      'UserName' => 'svc_ss_rpc',
+      'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab'
+    },
+  ],
   'SQL' => {
     'SQLDownloadURL' => 'https://go.microsoft.com/fwlink/p/?linkid=2215158&clcid=0x409&culture=en-us&country=us',
     'SMSDownloadURL' => 'https://aka.ms/ssmsfullsetup',
