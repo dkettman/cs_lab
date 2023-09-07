@@ -29,7 +29,9 @@ end
 
 powershell_script 'Deploy ADCS Certificate Template' do
   code <<-EOH
-  New-ADCSTemplate -DisplayName "Web Server v2" -JSON (Export-ADCSTemplate -DisplayName "Web Server") -Identity "Authenticated Users" -AutoEnroll -Publish
+  if (!(Get-ADCSTemplate | ?{$_.DisplayName -eq "Web Server v2"})) {
+    New-ADCSTemplate -DisplayName "Web Server v2" -JSON (Export-ADCSTemplate -DisplayName "Web Server") -Identity "Authenticated Users" -AutoEnroll -Publish
+  }
   EOH
   domain "cybersolve"
   user "Administrator"
@@ -63,6 +65,7 @@ node['SiteData']['ADUsers'].each do |user|
     property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
     property :password, ps_credential('cybersolve\administrator', node['SiteData']['DefaultPassword'])
     property :displayname, user['UserName']
+    property :path, user['Path']
     property :ensure, 'Present'
   end
 end
