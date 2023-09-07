@@ -4,6 +4,10 @@
 #
 # Copyright:: 2023, Dave Kettmann, All Rights Reserved.
 
+# reboot 'Restart Computer' do
+#   action :nothing
+# end
+
 node['ADJoin_PSPackages'].each do |package|
   powershell_package package do
     action :install
@@ -39,4 +43,6 @@ powershell_script 'Reset Local Administrator Password' do
   code <<-EOH
   Get-LocalUser -Name "Administrator" | Set-LocalUser -Password (ConvertTo-SecureString -String #{node['SiteData']['DefaultPassword']} -AsPlainText -Force)
   EOH
+  #notifies :reboot_now, 'reboot[Restart Computer]', :immediately
 end
+
