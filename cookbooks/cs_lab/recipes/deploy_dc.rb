@@ -49,5 +49,3 @@ ruby_block 'Fix User Permissions' do
     Chef::ReservedNames::Win32::Security.add_account_right('vagrant', 'SeAssignPrimaryTokenPrivilege')
   end
 end
-  
-    
