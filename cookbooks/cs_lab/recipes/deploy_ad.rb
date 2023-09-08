@@ -33,42 +33,7 @@ powershell_script 'Deploy ADCS Certificate Template' do
     New-ADCSTemplate -DisplayName "Web Server v2" -JSON (Export-ADCSTemplate -DisplayName "Web Server") -Identity "Authenticated Users" -AutoEnroll -Publish
   }
   EOH
-  domain "cybersolve"
-  user "Administrator"
+  domain 'cybersolve'
+  user 'Administrator'
   password node['SiteData']['DefaultPassword']
 end
-
-node['SiteData']['ADOU'].each do |ou|
-  dsc_resource "ADOU_#{ou['Name']}" do
-    resource :adorganizationalunit
-    property :name, ou['Name']
-    property :path, ou['Path']
-    property :description, ou['Description']
-    property :ensure, 'Present'
-  end
-end
-
-node['SiteData']['ADUsers'].each do |user|
-  dsc_resource "ADUser_#{user['UserName']}" do
-    resource :ADUser
-    property :username, user['UserName']
-    property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
-    property :password, ps_credential('cybersolve\administrator', node['SiteData']['DefaultPassword'])
-    property :displayname, user['UserName']
-    property :path, user['Path']
-    property :ensure, 'Present'
-  end
-end
-
-node['SiteData']['ADGroups'].each do |group|
-  dsc_resource "ADGroups_#{group['GroupName']}" do
-    resource :adgroup
-    property :groupname, group['GroupName']
-    property :path, group['Path']
-    property :description, group['Description']
-    property :memberstoinclude, group['Members']
-    property :ensure, 'Present'
-  end
-end
-
-
