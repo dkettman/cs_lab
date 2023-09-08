@@ -43,8 +43,8 @@ Vagrant.configure("2") do |config|
     dc.vm.provision "deploy_dc", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::deploy_dc]" end
     dc.vm.provision 'shell', reboot: true
     dc.vm.provision "deploy_dhcp", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::deploy_dhcp]" end
-    dc.vm.provision "deploy_ad", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::deploy_ad]"
-    end
+    dc.vm.provision "deploy_ad", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::deploy_ad]" end
+    dc.vm.provision "provision_ad", type: "chef_solo", run: "once" do |chef| chef.add_recipe "recipe[cs_lab::provision_ad]" end
   end
 
   config.vm.define "admin", primary: true do |admin|
@@ -103,13 +103,14 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.define "rmq" do |rmq|
-    rmq.vm.box = "ubuntu/jammy64"
+    #rmq.vm.box = "ubuntu/jammy64"
+    rmq.vm.box = "bento/ubuntu-22.04"
     rmq.vm.hostname = "rmq"
     rmq.vm.synced_folder "C:\\backup\\#{rmq.vm.hostname}", '/Backup', create: true
     rmq.vm.network "private_network", ip: "172.31.10.99", virtualbox__intnet: "CSLab"
     rmq.vm.provider "virtualbox" do |v|
-      v.memory = 2048
-      v.cpus = 2
+      v.memory = 1536
+      v.cpus = 1
     end
     rmq.vm.provision 'shell', inline: $install_rmq_script
   end
