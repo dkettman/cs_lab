@@ -20,17 +20,17 @@ default['WF_ADCS'] = %w(
   ADCS-Cert-Authority
 )
 
-default['DC_PSPackages'] = [
-  'ActiveDirectoryDsc',
-  'ActiveDirectoryCSDsc',
-  'ADCSTemplate',
-  'ComputerManagementDsc',
-  'DnsServerDsc',
-  'NetworkingDsc',
-  'StorageDsc',
-  'xDhcpServer',
-  'xPSDesiredStateConfiguration',
-]
+default['DC_PSPackages'] = %w(
+  ActiveDirectoryDsc
+  ActiveDirectoryCSDsc
+  ADCSTemplate
+  ComputerManagementDsc
+  DnsServerDsc
+  NetworkingDsc
+  StorageDsc
+  xDhcpServer
+  xPSDesiredStateConfiguration
+)
 
 default['ADJoin_PSPackages'] = %w(
   ComputerManagementDsc
@@ -48,7 +48,7 @@ default['WF_ADMIN'] = %w(
   RSAT-DHCP
   RSAT-DNS-Server
 )
-  
+
 default['SiteData'] = {
 
   # Common Variables
@@ -105,6 +105,21 @@ default['SiteData'] = {
       'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
       'Description' => 'Will provide SA access on SQL instances',
       'Members' => ['svc_ss_app'],
+    },
+    {
+      'GroupName' => 'GSG-SS-Role-Users',
+      'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
+      'Description' => 'Will provide membership to the Users role in Secret Server',
+    },
+    {
+      'GroupName' => 'GSG-SS-Role-Administrators',
+      'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
+      'Description' => 'Will provide membership to the Administrators role in Secret Server',
+    },
+    {
+      'GroupName' => 'GSG-SS-Role-Unlimited Admin',
+      'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
+      'Description' => 'Will provide membership to the Unlimited Admin role in Secret Server',
     },
   ],
   'ADUsers' => [
