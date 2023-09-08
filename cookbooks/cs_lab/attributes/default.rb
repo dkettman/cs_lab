@@ -140,8 +140,7 @@ default['SiteData'] = {
     'SQLDownloadURL' => 'https://go.microsoft.com/fwlink/p/?linkid=2215158&clcid=0x409&culture=en-us&country=us',
     'SMSDownloadURL' => 'https://aka.ms/ssmsfullsetup',
     'Instances' => %w(
-      SECRETSERVER
-      DIRECTAUDIT
+      
     ),
     'SQLAdministrators' => [
       # "#{node['SiteData']['ADDomain']['DomainShort']}\\Administrator",
