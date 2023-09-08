@@ -44,10 +44,11 @@ Good question! When you don't need it anymore you have a couple options:
 * `vagrant halt`
   * This will just stop and shutdown all of the boxes
 * `vagrant destroy`
-  * This will stop and delete all of the boxes. Alternatively, you can specify a box to destroy
+  * This will stop and delete all of the boxes. Alternatively, you can specify a box to destroy.
+    * Keep in mind! When you destroy a box, the AD object for the computer is not cleaned up and will need to be manually removed.
 * `vagrant provision`
   * If something that Chef configures is out of place, you can run `vagrant provision <boxname>` and it will re-run all of the provisioning steps defined in the Vagrant file against that box. It will not fix everything, but may bring you back to a working point.
 
 If you are completely done with everything, after you run `vagrant destroy`, you can run `vagrant box list` and then `vagrant box prune <box>` to delete the base images.
 
-If you need it again, just run `vagrant up` and if the boxes are still downloaded, you should have a full environment in about 30ish minutes!
+If you need it again, just run `vagrant up` and if the boxes are still downloaded, you should have a full environment in about 50ish minutes!

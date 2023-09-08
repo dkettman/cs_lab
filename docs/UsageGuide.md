@@ -3,7 +3,6 @@ Essentially, each section below will be OS-specific instructions of the followin
 * Install Software
   * VirtualBox
   * Vagrant
-    * vagrant-reload plugin
 * Clone Repository
 * Bring Up VMs
 * ???
@@ -14,8 +13,6 @@ Git has been around for a long while and has taken over as one of the largest VC
 1. Head over to (https://www.virtualbox.org/wiki/Downloads) and download the latest stable version of VirtualBox for Windows. Scroll down a little bit and find the corresponding VirtualBox Extensions Pack. This is OS-agnostic so there is just one download for all platforms. It enables a lot of the hooks Vagrant uses to manipulate the VMs.
    1. There are no special options required for install.
 2. Next is Vagrant. Go to (https://developer.hashicorp.com/vagrant/downloads) and download the latest stable version for Windows. Install Vagrant using the default settings.
-   1. Once Vagrant is installed, there is a plugin that needs to be installed. After the installation of Vagrant is complete, open a PowerShell window and make sure Vagrant is in your path by just running `vagrant`. It should spit out some help text. If not, check that Vagrant was installed properly and is in your PATH environment variable. 
-   2. To install the plugin, simply run `vagrant install plugin vagrant-reload`. This will reach out to the Vagrant repositories and find the `vagrant-reload` plugin and download the latest version.
 3. For this part, you *might* need to go out and download a Git client. You can go for the original at (https://www.git-scm.com). If you have VSCode installed, you can use that to grab the repository. There are many many Git clients now, choose one that suits you. If you aren't sure, go for the original and follow along. I will be providing commands for the standard Git CLI. Once you have your Git client downloaded, open PowerShell and find a directory that Vagrant can work out of. When we run our first Git command, it is going to create a directory and Vagrant will also store (some) data here. It is mostly metadata about the boxes and their states. This directory will be our Working Directory.
    1. First, we will need to 'clone' the repository. This can be done with:
    ```git clone https://github.com/dkettman/cs_lab```
@@ -26,8 +23,6 @@ Git has been around for a long while and has taken over as one of the largest VC
 1. Head over to (https://www.virtualbox.org/wiki/Downloads) and download the latest stable version of VirtualBox for Linux. Scroll down a little bit and find the corresponding VirtualBox Extensions Pack. This is OS-agnostic so there is just one download for all platforms. It enables a lot of the hooks Vagrant uses to manipulate the VMs.
    1. Your mileage may vary if you use your distribution's VirtualBox.
 2. Next is Vagrant. Go to (https://developer.hashicorp.com/vagrant/downloads) and download the latest stable version for your distribution. Install Vagrant using the default settings. Do not use your OS provided package for Vagrant. 
-   1. Once Vagrant is installed, there is a plugin that needs to be installed. After the installation of Vagrant is complete, open a shell and make sure Vagrant is in your path by just running `vagrant`. It should spit out some help text. If not, check that Vagrant was installed properly and is in your PATH environment variable. 
-   2. To install the plugin, simply run `vagrant install plugin vagrant-reload`. This will reach out to the Vagrant repositories and find the `vagrant-reload` plugin and download the latest version.
 3. For this part, you *might* need to go out and download a Git client. For Git, you can feel free to use your OS provided package. You can go for the original at (https://www.git-scm.com). I will be providing commands for the standard Git CLI. Once you have your Git client downloaded, open a shell and find a directory that Vagrant can work out of. When we run our first Git command, it is going to create a directory and Vagrant will also store (some) data here. It is mostly metadata about the boxes and their states. This directory will be our Working Directory.
    1. First, we will need to 'clone' the repository. This can be done with:
    ```git clone https://github.com/dkettman/cs_lab```
@@ -65,8 +60,60 @@ Generally, these can be ignored. Vagrant is great about catching irrepairable er
 
 ## Chef error
 Looks like this:
-```chef
-Chef error here
+```
+==> dc:   * dsc_resource[ADUser_svc_ss_app] action run
+==> dc:     ================================================================================
+==> dc:     Error executing action `run` on resource 'dsc_resource[ADUser_svc_ss_app]'
+==> dc:     ================================================================================
+==> dc:     ChefPowerShell::PowerShellExceptions::PowerShellCommandFailed
+==> dc:     -------------------------------------------------------------
+==> dc:     Unexpected exit in PowerShell command: ["Exception calling \"ValidateCredentials\" with \"2\" argument(s): \"The server cannot handle directory requests.\"", "The PowerShell DSC resource '[ADUser]DirectResourceAccess' with SourceInfo '' threw one or more non-terminating errors while running the Test-TargetResource functionality. These errors are logged to the ETW channel called Microsoft-Windows-DSC/Operational. Refer to this channel for more details."]
+==> dc:     Resource Declaration:
+==> dc:     ---------------------
+==> dc:     # In C:/chef/cache/cookbooks/cs_lab/recipes/provision_ad.rb
+==> dc:      18:     dsc_resource "ADUser_#{user['UserName']}" do
+==> dc:      19:       resource :ADUser
+==> dc:      20:       property :username, user['UserName']
+==> dc:      21:       property :domainname, node['SiteData']['ADDomain']['DomainFQDN']
+==> dc:      22:       property :password, ps_credential(user['UserName'], node['SiteData']['DefaultPassword'])
+==> dc:      23:       property :displayname, user['UserName']
+==> dc:      24:       property :path, user['Path']
+==> dc:      25:       property :ensure, 'Present'
+==> dc:      26:     end
+==> dc:      27:   end
+==> dc:     Compiled Resource:
+==> dc:     ------------------
+==> dc:     # Declared in C:/chef/cache/cookbooks/cs_lab/recipes/provision_ad.rb:18:in `block in from_file'
+==> dc:     dsc_resource("ADUser_svc_ss_app") do
+==> dc:       action [:run]
+==> dc:       default_guard_interpreter :default
+==> dc:       properties {username=>"svc_ss_app", domainname=>"cybersolve.lab", password=>New-Object System.Management.Automation.PSCredential('svc_ss_app',('01000000d08c9ddf0115d1118c7a00c04fc297eb010000009217151353dce441aa7007764d161bef0400000002000000000003660000c0000000100000002101df1c67d65a560e530db683fb66a40000000004800000a00000001000000047743173710f95b811b98c4af88d89d320000000c2f2ac2ddaff1d6495d157f11ba65325542cd615a1d415b246f0da3c41d5df9c14000000a388ab5e0cce635877a184590398a24e4e4ea4a8' | ConvertTo-SecureString)), displayname=>"svc_ss_app", path=>"OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab", ensure=>"Present"}
+==> dc:       resource :ADUser
+==> dc:       declared_type :dsc_resource
+==> dc:       cookbook_name "cs_lab"
+==> dc:       recipe_name "provision_ad"
+==> dc:     end
+==> dc:     System Info:
+==> dc:     ------------
+==> dc:     chef_version=18.2.7
+==> dc:     platform=windows
+==> dc:     platform_version=10.0.20348
+==> dc:     ruby=ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x64-mingw-ucrt]
+==> dc:     program_name=C:/opscode/chef/bin/chef-solo
+==> dc:     executable=C:/opscode/chef/bin/chef-solo
+==> dc: [2023-09-07T18:59:09+00:00] INFO: Running queued delayed notifications before re-raising exception
+==> dc: Running handlers:
+==> dc: [2023-09-07T18:59:09+00:00] ERROR: Running exception handlers
+==> dc: Running handlers complete
+==> dc: [2023-09-07T18:59:09+00:00] ERROR: Exception handlers complete
+==> dc: Infra Phase failed. 0 resources updated in 13 seconds
+==> dc: [2023-09-07T18:59:09+00:00] FATAL: Stacktrace dumped to C:/chef/cache/chef-stacktrace.out
+==> dc: [2023-09-07T18:59:09+00:00] FATAL: ---------------------------------------------------------------------------------------
+==> dc: [2023-09-07T18:59:09+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+==> dc: [2023-09-07T18:59:09+00:00] FATAL: ---------------------------------------------------------------------------------------
+==> dc: [2023-09-07T18:59:09+00:00] FATAL: ChefPowerShell::PowerShellExceptions::PowerShellCommandFailed: dsc_resource[ADUser_svc_ss_app] (cs_lab::provision_ad line 18) had an error: ChefPowerShell::PowerShellExceptions::PowerShellCommandFailed: Unexpected exit in PowerShell command: ["Exception calling \"ValidateCredentials\" with \"2\" argument(s): \"The server cannot handle directory requests.\"", "The PowerShell DSC resource '[ADUser]DirectResourceAccess' with SourceInfo '' threw one or more non-terminating errors while running the Test-TargetResource functionality. These errors are logged to the ETW channel called Microsoft-Windows-DSC/Operational. Refer to this channel for more details."]
+Chef never successfully completed! Any errors should be visible in the
+output above. Please fix your recipes so that they properly complete.
 ```
 These are an issue with the provisioning of the box. This means that Chef did not configure everything all the way or properly. If this happens, run:
 ```vagrant provision <box>```

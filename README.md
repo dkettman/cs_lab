@@ -4,12 +4,6 @@ Install latest stable version of:
 - [Vagrant](https://vagrantup.com)
 - [VirtualBox](https://virtualbox.org)
 
-After installing Vagrant, the 'vagrant-reload' plugin needs to be installed.
-
-```
-vagrant plugin install vagrant-reload
-```
-
 List of things this does! (This is not an extensive list!)
 - Builds 4 boxes
   - DC (Server 2022 Core)
@@ -19,7 +13,9 @@ List of things this does! (This is not an extensive list!)
   - SQL (Server 2022 Core)
     - SQL Server 2022
   - Util (Server 2022 Desktop)
-    - Used for utilities needed in the lab
+    - Used for utilities needed in the lab (DE, RMQ, etc.)
+  - Web01 (Server 2022 Desktop)
+    - Used for IIS
 	
 Check out the files in cookbooks/cs_lab/recipies for the recipies. You can change SOME settings in cookbooks/cs_lab/attributes/default.rb, but don't go making too many changes.
 
@@ -28,12 +24,11 @@ Check out the files in cookbooks/cs_lab/recipies for the recipies. You can chang
 | ---------|----|--------|
 | VirtualBox | Linux | ✅ |
 | VirtualBox | Windows 10 | ✅ |
-| Hyper-V | Windows 10 | ✳ |
 
 In theory, this Vagrantfile should work on Virtualbox, Hyper-V, and VMware Workstation. I do not have VMware Workstation available to me, so I have not tested it. Hyper-V needs the network configuration worked out, but the VMs all install correctly and seem to work alright.
 
 # Quickly you said...
-The short version is, once Vagrant (and plugin) and VirtualBox are installed, you can run `vagrant up` and it will go thru and build all of the defined boxes.
+The short version is, once Vagrant and VirtualBox are installed, you can run `vagrant up` and it will go thru and build all of the defined boxes.
 
 # How do I access them?
 The _admin_ box is labeled in the (Vagrantfile) as the 'primary'. This makes accessing it easy! Just run `vagrant rdp` and it will automatically try to start your RDP client to access the primary server. Want to get on a different box? Run `vagrant rdp <box>`!
