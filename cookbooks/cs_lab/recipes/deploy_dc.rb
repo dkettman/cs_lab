@@ -41,7 +41,7 @@ end
 dsc_resource 'SetForwarder' do
   resource :dnsserverforwarder
   property :issingleinstance, 'Yes'
-  property :ipaddresses, node['SiteData']['DNSForwarder']
+  property :ipaddresses, node['SiteData']['DNS']['Forwarders']
 end
 
 ruby_block 'Fix User Permissions' do
