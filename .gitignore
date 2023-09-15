@@ -14,3 +14,10 @@ vagrant
 # Certificate extensions
 *crt
 *rsp
+*.iso
+
+*.msi
+
+*.pfx
+
+*.cer

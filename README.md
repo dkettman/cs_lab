@@ -73,3 +73,8 @@ Here are some other interesting pages/documentation within this repository:
   - A little more in-depth guide on how to it all up
 - (run_logs/README.md)
   - There will be a complete output of my runs from `vagrant up` for each VM. This way, if you think something looks off, you can make sure by comparing output. 
+
+# HyperV Notes
+  `New-VMSwitch -Name NAT_vSwitch -SwitchType Internal`
+  `new-netIPAddress -IPAddress 172.31.1.1 -PrefixLength 24 -InterfaceAlias "vEthernet (NAT_vSwitch)"`
+  `new-netnat -Name CSLab -InternalIPInterfaceAddressPrefix 172.31.10.0/24`
