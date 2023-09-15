@@ -121,6 +121,17 @@ default['SiteData'] = {
       'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
       'Description' => 'Will provide membership to the Unlimited Admin role in Secret Server',
     },
+    {
+      'GroupName' => 'Domain Admins',
+      'Path' => 'CN=Users,DC=cybersolve,DC=lab',
+      'Members' => ['svc_ss_app', 'awong-a', 'hconrad-a', 'hfarnsworth-a', 'jzoidberg-a', 'pfry-a'],
+    },
+    {
+      'GroupName' => 'GSG-Web Administrators',
+      'Path' => 'OU=Domain Groups,DC=cybersolve,DC=lab',
+      'Description' => 'Members of this group belong to the Website Administration Team',
+      'Members' => ['jzoidberg'],
+    }
   ],
   'ADUsers' => [
     {
@@ -135,12 +146,52 @@ default['SiteData'] = {
       'UserName' => 'svc_ss_rpc',
       'Path' => 'OU=Service Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
     },
+    {
+      'UserName' => 'awong',
+      'Path' => 'OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'hconrad',
+      'Path' => 'OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'hfarnsworth',
+      'Path' => 'OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'jzoidberg',
+      'Path' => 'OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'pfry',
+      'Path' => 'OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'awong-a',
+      'Path' => 'OU=Privileged Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'hconrad-a',
+      'Path' => 'OU=Privileged Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'hfarnsworth-a',
+      'Path' => 'OU=Privileged Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'jzoidberg-a',
+      'Path' => 'OU=Privileged Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
+    },
+    {
+      'UserName' => 'pfry-a',
+      'Path' => 'OU=Privileged Accounts,OU=Domain Users,DC=cybersolve,DC=lab',
+    },
   ],
   'SQL' => {
     'SQLDownloadURL' => 'https://go.microsoft.com/fwlink/p/?linkid=2215158&clcid=0x409&culture=en-us&country=us',
     'SMSDownloadURL' => 'https://aka.ms/ssmsfullsetup',
     'Instances' => %w(
-      
+     SecretServer 
     ),
     'SQLAdministrators' => [
       # "#{node['SiteData']['ADDomain']['DomainShort']}\\Administrator",
